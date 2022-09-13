@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Asta</string>
+
+    <string name="start_asta">아스타에서 경매를 시작하세요.</string>
+    <string name="start">시작하기</string>
+    <string name="login">로그인</string>
+    <string name="have_account">이미 계정이 있나요?</string>
+    <string name="certification_phone_number">휴대폰번호 인증</string>
+    <string name="please_certification_phone_number">휴대폰 번호를 인증해주세요.</string>
+    <string name="register_with_phone_number">아스타는 휴대폰 번호로 가입해요.</string>
+    <string name="input_phone_number">휴대폰 번호를 입력해주세요.</string>
+    <string name="input_certification_number">인증 번호를 입력해주세요.</string>
+    <string name="get_certification_number">인증문자 받기</string>
+    <string name="confirm_certification_number">인증번호 확인</string>
+    <string name="error_phone_number">정확한 휴대폰 번호를 입력해 주세요.</string>
+    <string name="error_certification_number">인증번호가 잘못되었습니다.</string>
+    <string name="bidder">입찰자</string>
+
+
+    <string name="home">실시간 경매</string>
+    <string name="my_page">마이페이지</string>
+    <string name="ranking">랭킹</string>
+    <string name="appraisal">감정평가</string>
+    <string name="bid">응찰 이력</string>
+    <string name="search">검색</string>
+    <string name="category">카테고리</string>
+    <string name="wish_list">위시 리스트</string>
+    <string name="register_appraisal">감정평가 등록하기</string>
+    <string name="register_auction">경매 등록하기</string>
+</resources>

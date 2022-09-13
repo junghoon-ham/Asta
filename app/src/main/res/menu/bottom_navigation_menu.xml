@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragment_home"
+        android:icon="@drawable/ic_outline_gavel_24"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/fragment_appraisal"
+        android:icon="@drawable/ic_outline_rate_review_24"
+        android:title="@string/appraisal" />
+
+    <item
+        android:id="@+id/fragment_ranking"
+        android:icon="@drawable/ic_baseline_whatshot_24"
+        android:title="@string/ranking"/>
+
+    <item
+        android:id="@+id/fragment_bid"
+        android:icon="@drawable/ic_baseline_attach_money_24"
+        android:title="@string/bid" />
+
+    <item
+        android:id="@+id/fragment_my_page"
+        android:icon="@drawable/ic_outline_person_24"
+        android:title="@string/my_page"/>
+</menu>
