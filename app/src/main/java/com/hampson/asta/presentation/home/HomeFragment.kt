@@ -8,10 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hampson.asta.databinding.FragmentHomeBinding
+import com.hampson.asta.presentation.BaseFragment
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    override var bottomNavigationViewVisibility = View.VISIBLE
 
     private lateinit var adapter: AuctionPagingAdapter
 

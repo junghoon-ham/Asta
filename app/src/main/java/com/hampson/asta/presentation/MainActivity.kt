@@ -6,7 +6,9 @@ import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -46,10 +48,20 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.fragment_home, R.id.fragment_my_page
+                R.id.fragment_home,
+                R.id.fragment_appraisal,
+                R.id.fragment_ranking,
+                R.id.fragment_bid,
+                R.id.fragment_my_page
             )
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        //navController.addOnDestinationChangedListener { _: NavController, destination: NavDestination, _: Bundle? ->
+        //    binding.bottomNavigationView.isVisible =
+        //        appBarConfiguration.topLevelDestinations.contains(destination.id)
+        //}
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -62,10 +74,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
         when (item.itemId) {
             R.id.menu_wish_list -> {}
+            R.id.menu_category -> {navController.navigate(R.id.fragment_category)}
+            R.id.menu_search -> {}
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    fun setBottomNavigationVisibility(visibility: Int) {
+        binding.bottomNavigationView.visibility = visibility
+        binding.floatingActionMenu.visibility = visibility
     }
 }

@@ -34,4 +34,10 @@
         android:name="com.hampson.asta.presentation.my_page.MyPageFragment"
         android:label="@string/my_page"
         tools:layout="@layout/fragment_my_page" />
+
+    <fragment
+        android:id="@+id/fragment_category"
+        android:name="com.hampson.asta.presentation.CategoryFragment"
+        android:label="@string/category"
+        tools:layout="@layout/category_fragment" />
 </navigation>

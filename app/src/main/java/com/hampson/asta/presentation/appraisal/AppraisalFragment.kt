@@ -6,10 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.hampson.asta.databinding.FragmentAppraisalBinding
+import com.hampson.asta.presentation.BaseFragment
 
-class AppraisalFragment : Fragment() {
+class AppraisalFragment : BaseFragment() {
     private var _binding: FragmentAppraisalBinding? = null
     private val binding get() = _binding!!
+
+    override var bottomNavigationViewVisibility = View.VISIBLE
 
     override fun onCreateView(
         inflater: LayoutInflater,
