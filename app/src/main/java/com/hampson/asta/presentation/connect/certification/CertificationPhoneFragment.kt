@@ -78,10 +78,7 @@ class CertificationPhoneFragment : Fragment() {
             val phoneNumber = binding.editTextPhoneNumber.text.toString()
             certificationViewModel.sendPhoneNumber(phoneNumber = phoneNumber)
 
-            binding.textInputLayoutPhoneNumber.isEnabled = false
-            binding.buttonGetCertification.isVisible = false
-            binding.textInputLayoutCertificationNumber.isVisible = true
-            binding.buttonConfirmCertification.isVisible = true
+            bindInputVerifiedNumber()
         }
 
         binding.buttonConfirmCertification.setOnClickListener {
@@ -91,6 +88,13 @@ class CertificationPhoneFragment : Fragment() {
                 verifiedNumber = verifiedNumber
             )
         }
+    }
+
+    private fun bindInputVerifiedNumber() {
+        binding.textInputLayoutPhoneNumber.isEnabled = false
+        binding.buttonGetCertification.isVisible = false
+        binding.textInputLayoutCertificationNumber.isVisible = true
+        binding.buttonConfirmCertification.isVisible = true
     }
 
     override fun onDestroyView() {

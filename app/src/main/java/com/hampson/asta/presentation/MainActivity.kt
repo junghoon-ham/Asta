@@ -6,10 +6,9 @@ import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.isVisible
 import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navOptions
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -69,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_app_bar, menu)
+        menuInflater.inflate(R.menu.main_app_bar_menu, menu)
         return true
     }
 
@@ -77,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
         when (item.itemId) {
             R.id.menu_wish_list -> {}
-            R.id.menu_category -> {navController.navigate(R.id.fragment_category)}
+            R.id.menu_category -> navigateFragment(R.id.fragment_category)
             R.id.menu_search -> {}
         }
 
@@ -87,5 +86,18 @@ class MainActivity : AppCompatActivity() {
     fun setBottomNavigationVisibility(visibility: Int) {
         binding.bottomNavigationView.visibility = visibility
         binding.floatingActionMenu.visibility = visibility
+    }
+
+    private fun navigateFragment(fragment: Int) {
+        val options = navOptions {
+            anim {
+                enter = androidx.navigation.ui.R.anim.nav_default_enter_anim
+                exit = androidx.navigation.ui.R.anim.nav_default_exit_anim
+                popEnter = androidx.navigation.ui.R.anim.nav_default_pop_enter_anim
+                popExit = androidx.navigation.ui.R.anim.nav_default_pop_exit_anim
+            }
+        }
+
+        navController.navigate(fragment, null, options)
     }
 }

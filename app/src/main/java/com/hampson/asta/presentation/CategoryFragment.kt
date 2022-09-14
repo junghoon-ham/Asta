@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.hampson.asta.databinding.CategoryFragmentBinding
-import com.hampson.asta.databinding.FragmentBidBinding
-import com.hampson.asta.presentation.BaseFragment
 
 class CategoryFragment : BaseFragment() {
     private var _binding: CategoryFragmentBinding? = null
@@ -20,6 +17,24 @@ class CategoryFragment : BaseFragment() {
     ): View? {
         _binding = CategoryFragmentBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
+        //TODO: action bar menu 제거 작업
+        //val menuHost: MenuHost = requireActivity()
+        //menuHost.addMenuProvider(object : MenuProvider {
+        //    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        //        menuInflater.inflate(R.menu.default_app_bar_menu, menu)
+        //    }
+//
+        //    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        //        return false
+        //    }
+        //}, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onDestroyView() {
