@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.hampson.asta.R
 import com.hampson.asta.databinding.FragmentHomeBinding
 import com.hampson.asta.domain.model.Product
 import com.hampson.asta.presentation.BaseFragment
@@ -18,7 +18,7 @@ class HomeFragment : BaseFragment() {
 
     override var bottomNavigationViewVisibility = View.VISIBLE
 
-    private lateinit var adapter: AuctionPagingAdapter
+    private lateinit var adapter: TestAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,16 +40,27 @@ class HomeFragment : BaseFragment() {
                 productName = testString(),
                 currentPrice = testPrice2(),
                 startPrice = testPrice1(),
-                bidderCount = testCount()
+                bidderCount = testCount(),
+                productMainImage = testImage()
             )
 
             dataList.add(product)
         }
 
+
         binding.recyclerView.apply {
-            adapter = TestAdapter(dataList).apply { context = this@HomeFragment.context }
-            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL,false)
+            adapter = TestAdapter(dataList).apply {
+                context = this@HomeFragment.context
+            }
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+
+            (adapter as TestAdapter).setOnItemClickListener {
+                val action = HomeFragmentDirections.actionFragmentHomeStartToFragmentDetailAuction()
+                findNavController().navigate(action)
+            }
         }
+
+
     }
 
     private fun testCount(): Int {
@@ -72,6 +83,7 @@ class HomeFragment : BaseFragment() {
         add("휴지 세트")
         add("다이아몬드")
     }
+
     private fun testString(): String {
         return testList.random()
     }
@@ -86,24 +98,37 @@ class HomeFragment : BaseFragment() {
         return range.random()
     }
 
+    var imageList = arrayListOf<Int>().apply {
+        add(R.drawable.test_img1)
+        add(R.drawable.test_img2)
+        add(R.drawable.test_img3)
+        add(R.drawable.test_img4)
+        add(R.drawable.test_img6)
+        add(R.drawable.test_img7)
+    }
+
+    private fun testImage(): Int {
+        return imageList.random()
+    }
+
     private fun setupRecyclerView() {
 
-        adapter = AuctionPagingAdapter()
-        binding.recyclerView.apply {
-            setHasFixedSize(true)
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(),
-                    DividerItemDecoration.VERTICAL
-                )
-            )
-        }
-
-        adapter.setOnItemClickListener {
-
-        }
+        // adapter = AuctionPagingAdapter()
+        // binding.recyclerView.apply {
+        //     setHasFixedSize(true)
+        //     layoutManager =
+        //         LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        //     addItemDecoration(
+        //         DividerItemDecoration(
+        //             requireContext(),
+        //             DividerItemDecoration.VERTICAL
+        //         )
+        //     )
+        // }
+//
+        // adapter.setOnItemClickListener {
+//
+        // }
     }
 
     override fun onDestroyView() {

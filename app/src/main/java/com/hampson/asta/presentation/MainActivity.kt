@@ -1,5 +1,6 @@
 package com.hampson.asta.presentation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         setupJetpackNavigation()
     }
 
+    @SuppressLint("RestrictedApi")
     private fun setupJetpackNavigation() {
         val host = supportFragmentManager
             .findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment? ?: return
@@ -61,6 +63,12 @@ class MainActivity : AppCompatActivity() {
         //    binding.bottomNavigationView.isVisible =
         //        appBarConfiguration.topLevelDestinations.contains(destination.id)
         //}
+
+        supportActionBar?.setShowHideAnimationEnabled(false)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.fragment_detail_auction) supportActionBar?.hide()
+            else supportActionBar?.show()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -88,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         binding.floatingActionMenu.visibility = visibility
     }
 
-    private fun navigateFragment(fragment: Int) {
+    fun navigateFragment(fragment: Int) {
         val options = navOptions {
             anim {
                 enter = androidx.navigation.ui.R.anim.nav_default_enter_anim

@@ -6,8 +6,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hampson.asta.databinding.ItemProductBinding
 import com.hampson.asta.domain.model.Product
+import java.text.DecimalFormat
 
-class TestAdapter(val dataList: ArrayList<Product> = ArrayList()): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TestAdapter(val dataList: ArrayList<Product> = ArrayList()) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    val dec = DecimalFormat("#,###")
+
+    private var onItemClickListener: ((Product) -> Unit)? = null
+    fun setOnItemClickListener(listener: (Product) -> Unit) {
+        onItemClickListener = listener
+    }
 
     var context: Context? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
@@ -23,12 +32,19 @@ class TestAdapter(val dataList: ArrayList<Product> = ArrayList()): RecyclerView.
         return dataList.size
     }
 
-    inner class MyViewHolder(val binding: ItemProductBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class MyViewHolder(val binding: ItemProductBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bindItem(item: Product) {
             binding.textViewTitle.text = item.productName
             binding.textViewBidder.text = "${item.bidderCount}명"
-            binding.textViewCurrentPrice.text = "${item.currentPrice}원"
-            binding.textViewStartPrice.text = "${item.startPrice}원"
+            binding.textViewCurrentPrice.text = "${dec.format(item.currentPrice)}원"
+            binding.textViewStartPrice.text = "${dec.format(item.startPrice)}원"
+
+            binding.imageViewProfile.setImageResource(item.productMainImage!!)
+
+            binding.root.setOnClickListener {
+                onItemClickListener?.let { it(item) }
+            }
         }
     }
 }

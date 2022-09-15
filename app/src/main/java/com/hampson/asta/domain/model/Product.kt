@@ -7,7 +7,8 @@ import com.hampson.asta.domain.util.TransactionType
 data class Product(
     val id: Int? = null,
     val productName: String? = null, // 상품명
-    val productMainImage: String? = null, // 상품 메인 이미지
+    //TODO: test로 인해 int
+    val productMainImage: Int? = null, // 상품 메인 이미지
     val productSubImages: List<String>? = null, // 상품 서브 이미지
     val startPrice: Int? = null, // 시작가
     val currentPrice: Int? = null, // 현재가

@@ -113,6 +113,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="fragment_detail_auction">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-98" />
+                            <option name="y" value="528" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="fragment_home">
                     <value>
                       <LayoutPositions>

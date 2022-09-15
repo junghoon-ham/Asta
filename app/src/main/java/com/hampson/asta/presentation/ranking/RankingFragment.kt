@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.hampson.asta.databinding.FragmentRankingBinding
+import com.hampson.asta.presentation.BaseFragment
 
-class RankingFragment : Fragment() {
+class RankingFragment : BaseFragment() {
     private var _binding: FragmentRankingBinding? = null
     private val binding get() = _binding!!
+
+    override var bottomNavigationViewVisibility = View.VISIBLE
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -6,11 +6,11 @@
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
     android:clickable="true"
+    android:focusable="true"
     android:paddingStart="16dp"
-    android:paddingBottom="16dp"
     android:paddingTop="16dp"
     android:paddingEnd="16dp"
-    android:focusable="true">
+    android:paddingBottom="16dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_profile"
@@ -26,6 +26,7 @@
             android:id="@+id/image_view_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_baseline_whatshot_24" />
     </androidx.cardview.widget.CardView>
 
@@ -59,17 +60,17 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
+            android:text="시작가"
             android:textColor="@color/color_444444"
-            android:textSize="14sp"
-            android:text="시작가" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/text_view_start_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:layout_marginStart="4dp"
             android:textColor="@color/color_444444"
             android:textSize="14sp"
             tools:text="200,000원" />
@@ -92,21 +93,21 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
+            android:text="현재가"
             android:textColor="@color/color_444444"
             android:textSize="14sp"
-            android:textStyle="bold"
-            android:text="현재가" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_view_current_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textStyle="bold"
-            android:layout_marginStart="4dp"
             android:textColor="@color/color_444444"
             android:textSize="14sp"
+            android:textStyle="bold"
             tools:text="200,000원" />
     </LinearLayout>
 
