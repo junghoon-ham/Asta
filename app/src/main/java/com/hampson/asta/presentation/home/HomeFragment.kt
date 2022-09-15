@@ -37,10 +37,10 @@ class HomeFragment : BaseFragment() {
         val dataList = arrayListOf<Product>()
         for (i in 0..100) {
             val product = Product(
-                productName = "함슨 싸인",
-                currentPrice = 320000,
-                startPrice = 200000,
-                bidderCount = 382
+                productName = testString(),
+                currentPrice = testPrice2(),
+                startPrice = testPrice1(),
+                bidderCount = testCount()
             )
 
             dataList.add(product)
@@ -50,6 +50,40 @@ class HomeFragment : BaseFragment() {
             adapter = TestAdapter(dataList).apply { context = this@HomeFragment.context }
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL,false)
         }
+    }
+
+    private fun testCount(): Int {
+        val range = (0..500)
+        return range.random()
+    }
+
+    private val testList = arrayListOf<String>().apply {
+        add("함슨 싸인")
+        add("노트북")
+        add("햄버거")
+        add("충전기")
+        add("휴대폰")
+        add("먹다남은 피자")
+        add("고장난 냉장고")
+        add("BMW")
+        add("전기 자전거")
+        add("로봇")
+        add("원두 좋은 커피")
+        add("휴지 세트")
+        add("다이아몬드")
+    }
+    private fun testString(): String {
+        return testList.random()
+    }
+
+    private fun testPrice1(): Int {
+        val range = (2000..30000)
+        return range.random()
+    }
+
+    private fun testPrice2(): Int {
+        val range = (30000..1000000)
+        return range.random()
     }
 
     private fun setupRecyclerView() {
