@@ -39,5 +39,5 @@
         android:id="@+id/fragment_category"
         android:name="com.hampson.asta.presentation.CategoryFragment"
         android:label="@string/category"
-        tools:layout="@layout/category_fragment" />
+        tools:layout="@layout/fragment_category" />
 </navigation>

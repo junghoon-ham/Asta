@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.hampson.asta.databinding.CategoryFragmentBinding
+import com.hampson.asta.databinding.FragmentCategoryBinding
 
 class CategoryFragment : BaseFragment() {
-    private var _binding: CategoryFragmentBinding? = null
+    private var _binding: FragmentCategoryBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -15,7 +15,7 @@ class CategoryFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = CategoryFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentCategoryBinding.inflate(inflater, container, false)
         return binding.root
     }
 

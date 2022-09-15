@@ -4,9 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
     android:paddingStart="16dp"
+    android:paddingBottom="16dp"
     android:paddingTop="16dp"
-    android:paddingEnd="16dp">
+    android:paddingEnd="16dp"
+    android:focusable="true">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_profile"
@@ -32,42 +36,78 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:textColor="@color/color_444444"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/linear_layout_bidder"
         app:layout_constraintStart_toEndOf="@+id/card_view_profile"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="함슨 싸인" />
 
-    <TextView
-        android:id="@+id/text_view_start_price"
+    <LinearLayout
+        android:id="@+id/linear_layout_start_price"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textColor="@color/color_444444"
-        android:textSize="16sp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toStartOf="@+id/linear_layout_bidder"
         app:layout_constraintStart_toEndOf="@+id/card_view_profile"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_title"
-        tools:text="시작가 200,000원" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_title">
 
-    <TextView
-        android:id="@+id/text_view_current_price"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/color_444444"
+            android:textSize="14sp"
+            android:text="시작가" />
+
+        <TextView
+            android:id="@+id/text_view_start_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/color_444444"
+            android:textSize="14sp"
+            tools:text="200,000원" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_layout_current_price"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textColor="@color/color_444444"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toStartOf="@+id/linear_layout_bidder"
         app:layout_constraintStart_toEndOf="@+id/card_view_profile"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_start_price"
-        tools:text="현재가 320,000원" />
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_start_price">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/color_444444"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="현재가" />
+
+        <TextView
+            android:id="@+id/text_view_current_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/color_444444"
+            android:textSize="16sp"
+            tools:text="200,000원" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linear_layout_bidder"
@@ -84,7 +124,7 @@
             android:layout_height="wrap_content"
             android:text="@string/bidder"
             android:textColor="@color/color_444444"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/text_view_bidder"
@@ -92,18 +132,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textColor="@color/app_red"
-            android:textSize="26sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             tools:text="593명" />
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/color_bdbdbd"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_current_price" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

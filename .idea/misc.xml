@@ -29,6 +29,8 @@
         <entry key="..\:/projects/Asta/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.194" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12760416666666666" />
         <entry key="app/src/main/res/layout/category_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_category.xml" value="0.27447916666666666" />
+        <entry key="app/src/main/res/layout/item_product.xml" value="0.26927083333333335" />
       </map>
     </option>
   </component>
