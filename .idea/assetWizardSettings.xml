@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../AndroidStudio/icons/material/materialiconsoutlined/gavel/outline_gavel_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialiconsoutlined/brightness_1/outline_brightness_1_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,9 +33,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="444444" />
-                            <entry key="outputName" value="ic_outline_gavel_24" />
-                            <entry key="sourceFile" value="C:\projects\Asta" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="ic_outline_brightness_1_24" />
+                            <entry key="sourceFile" value="/C:\projects\Asta" />
                           </map>
                         </option>
                       </PersistentState>

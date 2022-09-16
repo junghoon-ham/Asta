@@ -18,7 +18,6 @@
         <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_appraisal.xml" value="0.35572916666666665" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_bid.xml" value="0.35572916666666665" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_certification_phone.xml" value="0.36614583333333334" />
-        <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_detail_auction.xml" value="0.3546875" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_home.xml" value="0.18229166666666666" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_my_page.xml" value="0.18385416666666668" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_mypage.xml" value="0.18333333333333332" />
@@ -28,9 +27,11 @@
         <entry key="..\:/projects/Asta/app/src/main/res/menu/default_app_bar_menu.xml" value="0.1859375" />
         <entry key="..\:/projects/Asta/app/src/main/res/menu/main_app_bar.xml" value="0.18958333333333333" />
         <entry key="..\:/projects/Asta/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.194" />
+        <entry key="app/src/main/res/drawable/ic_baseline_keyboard_arrow_right_32.xml" value="0.152" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12760416666666666" />
         <entry key="app/src/main/res/layout/category_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.27447916666666666" />
+        <entry key="app/src/main/res/layout/fragment_detail_auction.xml" value="0.26927083333333335" />
         <entry key="app/src/main/res/layout/item_product.xml" value="0.26927083333333335" />
       </map>
     </option>
