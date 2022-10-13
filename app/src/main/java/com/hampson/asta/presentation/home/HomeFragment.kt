@@ -11,7 +11,9 @@ import com.hampson.asta.R
 import com.hampson.asta.databinding.FragmentHomeBinding
 import com.hampson.asta.domain.model.Product
 import com.hampson.asta.presentation.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : BaseFragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -33,6 +35,26 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+
+        // adapter = AuctionPagingAdapter()
+        // binding.recyclerView.apply {
+        //     setHasFixedSize(true)
+        //     layoutManager =
+        //         LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        //     addItemDecoration(
+        //         DividerItemDecoration(
+        //             requireContext(),
+        //             DividerItemDecoration.VERTICAL
+        //         )
+        //     )
+        // }
+//
+        // adapter.setOnItemClickListener {
+//
+        // }
 
         val dataList = arrayListOf<Product>()
         for (i in 0..100) {
@@ -59,8 +81,6 @@ class HomeFragment : BaseFragment() {
                 findNavController().navigate(action)
             }
         }
-
-
     }
 
     private fun testCount(): Int {
@@ -109,26 +129,6 @@ class HomeFragment : BaseFragment() {
 
     private fun testImage(): Int {
         return imageList.random()
-    }
-
-    private fun setupRecyclerView() {
-
-        // adapter = AuctionPagingAdapter()
-        // binding.recyclerView.apply {
-        //     setHasFixedSize(true)
-        //     layoutManager =
-        //         LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        //     addItemDecoration(
-        //         DividerItemDecoration(
-        //             requireContext(),
-        //             DividerItemDecoration.VERTICAL
-        //         )
-        //     )
-        // }
-//
-        // adapter.setOnItemClickListener {
-//
-        // }
     }
 
     override fun onDestroyView() {

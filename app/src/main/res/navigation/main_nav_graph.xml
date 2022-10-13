@@ -24,7 +24,16 @@
         android:id="@+id/fragment_appraisal"
         android:name="com.hampson.asta.presentation.appraisal.AppraisalFragment"
         android:label="@string/appraisal"
-        tools:layout="@layout/fragment_appraisal" />
+        tools:layout="@layout/fragment_appraisal">
+
+        <action
+            android:id="@+id/action_fragment_appraisal_start_to_fragment_detail_appraisal"
+            app:destination="@id/fragment_detail_appraisal"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_ranking"
@@ -42,7 +51,16 @@
         android:id="@+id/fragment_my_page"
         android:name="com.hampson.asta.presentation.my_page.MyPageFragment"
         android:label="@string/my_page"
-        tools:layout="@layout/fragment_my_page" />
+        tools:layout="@layout/fragment_my_page">
+
+        <action
+            android:id="@+id/action_fragment_my_page_to_fragment_profile"
+            app:destination="@id/fragment_profile"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_category"
@@ -53,5 +71,132 @@
     <fragment
         android:id="@+id/fragment_detail_auction"
         android:name="com.hampson.asta.presentation.detail_auction.DetailAuctionFragment"
-        tools:layout="@layout/fragment_detail_auction" />
+        tools:layout="@layout/fragment_detail_auction">
+
+        <action
+            android:id="@+id/action_fragment_detail_auction_to_fragment_comment"
+            app:destination="@id/fragment_comment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+        <action
+            android:id="@+id/action_fragment_detail_auction_to_fragment_history_bid"
+            app:destination="@id/fragment_history_bid"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+        <action
+            android:id="@+id/action_fragment_detail_auction_to_fragment_profile"
+            app:destination="@id/fragment_profile"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_detail_appraisal"
+        android:name="com.hampson.asta.presentation.detail_appraisal.DetailAppraisalFragment"
+        tools:layout="@layout/fragment_detail_appraisal">
+
+        <action
+            android:id="@+id/action_fragment_detail_appraisal_to_fragment_comment"
+            app:destination="@id/fragment_comment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+        <action
+            android:id="@+id/action_fragment_detail_appraisal_to_fragment_history_appraisal"
+            app:destination="@id/fragment_history_appraisal"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+        <action
+            android:id="@+id/action_fragment_detail_appraisal_to_fragment_profile"
+            app:destination="@id/fragment_profile"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_comment"
+        android:name="com.hampson.asta.presentation.comment.CommentFragment"
+        android:label="@string/comment"
+        tools:layout="@layout/fragment_comment">
+
+        <action
+            android:id="@+id/action_fragment_comment_to_fragment_profile"
+            app:destination="@id/fragment_profile"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_history_bid"
+        android:name="com.hampson.asta.presentation.detail_auction.history_bid.HistoryBidFragment"
+        android:label="@string/details_bid"
+        tools:layout="@layout/fragment_history_bid">
+
+        <action
+            android:id="@+id/action_fragment_history_bid_to_fragment_profile"
+            app:destination="@id/fragment_profile"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_history_appraisal"
+        android:name="com.hampson.asta.presentation.detail_appraisal.history_appraisal.HistoryAppraisalFragment"
+        android:label="@string/details_appraisal"
+        tools:layout="@layout/fragment_history_appraisal">
+
+        <action
+            android:id="@+id/action_fragment_history_appraisal_to_fragment_profile"
+            app:destination="@id/fragment_profile"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_profile"
+        android:name="com.hampson.asta.presentation.profile.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile">
+
+        <action
+            android:id="@+id/action_fragment_profile_to_fragment_history_auction"
+            app:destination="@id/fragment_history_auction"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_history_auction"
+        android:name="com.hampson.asta.presentation.history_auction.HistoryAuctionFragment"
+        android:label="@string/history_auction"
+        tools:layout="@layout/fragment_history_auction" />
+
+    <fragment
+        android:id="@+id/fragment_register_auction"
+        android:name="com.hampson.asta.presentation.register_auction.RegisterAuctionFragment"
+        android:label="@string/register_auction_label"
+        tools:layout="@layout/fragment_register_auction" />
 </navigation>

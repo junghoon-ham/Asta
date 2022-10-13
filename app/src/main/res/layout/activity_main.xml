@@ -29,6 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
+        android:visibility="gone"
         app:fab_addButtonColorNormal="@color/app_red"
         app:fab_addButtonColorPressed="@color/app_red"
         app:fab_labelStyle="@style/LabelStyle"
@@ -37,6 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/button_register_auction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/white"
@@ -45,6 +47,7 @@
             app:fab_title="@string/register_auction" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/button_register_appraisal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/white"

@@ -4,9 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import com.hampson.asta.databinding.FragmentCategoryBinding
 import com.hampson.asta.presentation.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class CategoryFragment : BaseFragment() {
     private var _binding: FragmentCategoryBinding? = null
     private val binding get() = _binding!!
@@ -21,21 +25,21 @@ class CategoryFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
-        //TODO: action bar menu 제거 작업
-        //val menuHost: MenuHost = requireActivity()
-        //menuHost.addMenuProvider(object : MenuProvider {
-        //    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        //        menuInflater.inflate(R.menu.default_app_bar_menu, menu)
-        //    }
-//
-        //    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        //        return false
-        //    }
-        //}, viewLifecycleOwner, Lifecycle.State.RESUMED)
-
         super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        binding.recyclerView.apply {
+            layoutManager = GridLayoutManager(context, 3)
+            adapter = CategoryAdapter().apply {
+                context = this@CategoryFragment.context
+            }
+
+            (adapter as CategoryAdapter).setOnItemClickListener {
+
+            }
+        }
     }
 
     override fun onDestroyView() {

@@ -1,6 +1,5 @@
 package com.hampson.asta.presentation.connect
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -37,7 +36,6 @@ class ConnectActivity : AppCompatActivity() {
         setupJetpackNavigation()
     }
 
-    @SuppressLint("RestrictedApi")
     private fun setupJetpackNavigation() {
         val host = supportFragmentManager
             .findFragmentById(R.id.connect_nav_host_fragment) as NavHostFragment? ?: return
@@ -48,7 +46,7 @@ class ConnectActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        supportActionBar?.setShowHideAnimationEnabled(false)
+        //supportActionBar?.setShowHideAnimationEnabled(false)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.fragment_app_start) supportActionBar?.hide()
             else supportActionBar?.show()

@@ -1,12 +1,16 @@
 package com.hampson.asta.presentation
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.MenuProvider
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
@@ -17,7 +21,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.hampson.asta.R
 import com.hampson.asta.databinding.ActivityMainBinding
 import com.hampson.asta.presentation.connect.ConnectViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by lazy {
@@ -26,8 +32,14 @@ class MainActivity : AppCompatActivity() {
 
     private val connectViewModel by viewModels<ConnectViewModel>()
 
-    private lateinit var navController: NavController
+    lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+
+    private val mainMenuId = R.menu.main_app_bar_menu
+    private val defaultMenuId = R.menu.default_app_bar_menu
+    private val myPageMenuId = R.menu.my_page_app_bar_menu
+
+    private lateinit var menuProvider: MenuProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen().apply {
@@ -38,9 +50,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupJetpackNavigation()
+        setupClickListener()
     }
 
-    @SuppressLint("RestrictedApi")
+    private fun setupClickListener() {
+        binding.buttonRegisterAuction.setOnClickListener {
+            navigateFragment(R.id.fragment_register_auction)
+            binding.floatingActionMenu.collapse()
+        }
+
+        binding.buttonRegisterAppraisal.setOnClickListener {
+            Toast.makeText(this, "test", Toast.LENGTH_SHORT).show()
+            binding.floatingActionMenu.collapse()
+        }
+    }
+
     private fun setupJetpackNavigation() {
         val host = supportFragmentManager
             .findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment? ?: return
@@ -59,33 +83,71 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        //navController.addOnDestinationChangedListener { _: NavController, destination: NavDestination, _: Bundle? ->
-        //    binding.bottomNavigationView.isVisible =
-        //        appBarConfiguration.topLevelDestinations.contains(destination.id)
-        //}
+        setupActionBar()
+        setupVisibleActionBar()
+        setupVisibleFloatingButton()
+    }
 
-        supportActionBar?.setShowHideAnimationEnabled(false)
+    private fun setupActionBar() {
+        //supportActionBar?.setShowHideAnimationEnabled(false)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.fragment_detail_auction) supportActionBar?.hide()
-            else supportActionBar?.show()
+            when (destination.id) {
+                R.id.fragment_detail_auction,
+                R.id.fragment_detail_appraisal -> supportActionBar?.hide()
+                R.id.fragment_home,
+                R.id.fragment_appraisal -> setupMenuProvider(mainMenuId)
+                R.id.fragment_my_page -> setupMenuProvider(myPageMenuId)
+                else -> setupMenuProvider(defaultMenuId)
+            }
         }
+    }
+
+    private fun setupVisibleActionBar() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.fragment_detail_auction,
+                R.id.fragment_detail_appraisal -> supportActionBar?.hide()
+                else -> supportActionBar?.show()
+            }
+        }
+    }
+
+    private fun setupVisibleFloatingButton() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.fragment_home,
+                R.id.fragment_appraisal -> binding.floatingActionMenu.isVisible = true
+                else -> binding.floatingActionMenu.isGone = true
+            }
+        }
+    }
+
+    private fun setupMenuProvider(menuId: Int) {
+        if (this::menuProvider.isInitialized) removeMenuProvider(menuProvider)
+
+        menuProvider = object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(menuId, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return true
+            }
+        }
+
+        addMenuProvider(menuProvider)
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_app_bar_menu, menu)
-        return true
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when (item.itemId) {
             R.id.menu_wish_list -> {}
             R.id.menu_category -> navigateFragment(R.id.fragment_category)
             R.id.menu_search -> {}
+            else -> onBackPressed()
         }
 
         return super.onOptionsItemSelected(item)
@@ -93,10 +155,9 @@ class MainActivity : AppCompatActivity() {
 
     fun setBottomNavigationVisibility(visibility: Int) {
         binding.bottomNavigationView.visibility = visibility
-        binding.floatingActionMenu.visibility = visibility
     }
 
-    fun navigateFragment(fragment: Int) {
+    private fun navigateFragment(fragment: Int) {
         val options = navOptions {
             anim {
                 enter = androidx.navigation.ui.R.anim.nav_default_enter_anim

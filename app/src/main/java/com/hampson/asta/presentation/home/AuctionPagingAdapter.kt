@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.DiffUtil
 import com.hampson.asta.databinding.ItemProductBinding
 import com.hampson.asta.domain.model.Product
 
-class AuctionPagingAdapter : PagingDataAdapter<Product, AuctionViewHolder>(BookDiffCallback) {
+class AuctionPagingAdapter : PagingDataAdapter<Product, AuctionViewHolder>(ProductDiffCallback) {
 
     override fun onBindViewHolder(holder: AuctionViewHolder, position: Int) {
         val pagedBook = getItem(position)
-        pagedBook?.let { book ->
-            holder.bind(book)
+        pagedBook?.let { product ->
+            holder.bind(product)
             holder.itemView.setOnClickListener {
-                onItemClickListener?.let { it(book) }
+                onItemClickListener?.let { it(product) }
             }
         }
     }
@@ -31,7 +31,7 @@ class AuctionPagingAdapter : PagingDataAdapter<Product, AuctionViewHolder>(BookD
     }
 
     companion object {
-        private val BookDiffCallback = object : DiffUtil.ItemCallback<Product>() {
+        private val ProductDiffCallback = object : DiffUtil.ItemCallback<Product>() {
             override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
                 return oldItem.id == newItem.id
             }

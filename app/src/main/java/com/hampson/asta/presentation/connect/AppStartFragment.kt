@@ -10,9 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hampson.asta.databinding.FragmentAppStartBinding
 import com.hampson.asta.presentation.connect.certification.CertificationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class AppStartFragment : Fragment() {
     private var _binding: FragmentAppStartBinding? = null
     private val binding get() = _binding!!
@@ -33,7 +34,7 @@ class AppStartFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        setClickListener()
+        setupClickListener()
     }
 
     private fun checkUserSignIn() {
@@ -48,7 +49,7 @@ class AppStartFragment : Fragment() {
         }
     }
 
-    private fun setClickListener() {
+    private fun setupClickListener() {
         binding.buttonLogin.setOnClickListener {
             val action =
                 AppStartFragmentDirections.actionFragmentAppStartToFragmentCertificationPhone()

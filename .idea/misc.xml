@@ -3,29 +3,69 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable-v24/ic_baseline_favorite_24_red.xml" value="0.231" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.196" />
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable-v24/rect_top_rounded_12_background_ffffff.xml" value="0.1905" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable/background_label.xml" value="0.275" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.27" />
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.231" />
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable/ic_baseline_favorite_24_red.xml" value="0.231" />
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.231" />
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable/ic_baseline_touch_app_24.xml" value="0.2825" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable/ic_baseline_whatshot_24.xml" value="0.194" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable/ic_launcher_background.xml" value="0.196" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable/ic_outline_attach_money_24.xml" value="0.194" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable/ic_outline_rate_review_24.xml" value="0.27" />
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable/round_12_background_ffffff.xml" value="0.1905" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable/round_6_background_ff5a5a.xml" value="0.3085" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/activity_connect.xml" value="0.1875" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/activity_main.xml" value="0.16875" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/bottom_sheet_dialog_appraisal.xml" value="0.35052083333333334" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/bottom_sheet_dialog_bid.xml" value="0.18125" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/bottom_sheet_dialog_recycler_view.xml" value="0.35052083333333334" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/bottom_sheet_dialog_register_category.xml" value="0.35052083333333334" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/bottom_sheet_dialog_register_condition.xml" value="0.18229166666666666" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/bottom_sheet_dialog_register_deadline.xml" value="0.35052083333333334" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/bottom_sheet_dialog_register_price.xml" value="0.35052083333333334" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/category_fragment.xml" value="0.33" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_app_start.xml" value="0.3651041666666667" />
-        <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_appraisal.xml" value="0.35572916666666665" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_appraisal.xml" value="0.2" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_bid.xml" value="0.35572916666666665" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_category.xml" value="0.33" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_certification_phone.xml" value="0.36614583333333334" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_comment.xml" value="0.3494791666666667" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_detail_appraisal.xml" value="0.35052083333333334" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_detail_auction.xml" value="0.2651632970451011" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_history_appraisal.xml" value="0.18229166666666666" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_history_auction_view.xml" value="0.18229166666666666" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_history_bid.xml" value="0.3494791666666667" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_home.xml" value="0.18229166666666666" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_my_page.xml" value="0.18385416666666668" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_mypage.xml" value="0.18333333333333332" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_profile.xml" value="0.3494791666666667" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_ranking.xml" value="0.18802083333333333" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_ranking_view.xml" value="0.3494791666666667" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/fragment_register_auction.xml" value="0.3494791666666667" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/item_appraisalt.xml" value="0.18229166666666666" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/item_category.xml" value="0.274609375" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/item_comment.xml" value="0.35052083333333334" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/item_condition.xml" value="0.22" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/item_history_appraisal.xml" value="0.18229166666666666" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/item_history_bid.xml" value="0.3494791666666667" />
         <entry key="..\:/projects/Asta/app/src/main/res/layout/item_product.xml" value="0.33" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/item_product_horizontal.xml" value="0.18125" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/item_ranking.xml" value="0.5951834862385321" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/item_ranking_appraisal.xml" value="0.18229166666666666" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/list_item.xml" value="0.3494791666666667" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/screen_detail_appraisal.xml" value="0.3609375" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/screen_detail_auction.xml" value="0.36614583333333334" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/screen_detail_bid.xml" value="0.19010416666666666" />
+        <entry key="..\:/projects/Asta/app/src/main/res/layout/view_category.xml" value="0.3494791666666667" />
         <entry key="..\:/projects/Asta/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1375" />
         <entry key="..\:/projects/Asta/app/src/main/res/menu/default_app_bar_menu.xml" value="0.1859375" />
         <entry key="..\:/projects/Asta/app/src/main/res/menu/main_app_bar.xml" value="0.18958333333333333" />
+        <entry key="..\:/projects/Asta/app/src/main/res/menu/main_app_bar_menu.xml" value="0.19270833333333334" />
+        <entry key="..\:/projects/Asta/app/src/main/res/menu/my_page_app_bar_menu.xml" value="0.36614583333333334" />
         <entry key="..\:/projects/Asta/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/ic_baseline_keyboard_arrow_right_32.xml" value="0.152" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12760416666666666" />

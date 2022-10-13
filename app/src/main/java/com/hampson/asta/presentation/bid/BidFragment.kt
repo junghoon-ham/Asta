@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.hampson.asta.databinding.FragmentBidBinding
 import com.hampson.asta.presentation.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BidFragment : BaseFragment() {
     private var _binding: FragmentBidBinding? = null
     private val binding get() = _binding!!

@@ -33,9 +33,12 @@ class CertificationPhoneFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTextChangedListener()
-        setClickListener()
+        setupTextChangedListener()
+        setupClickListener()
+        initObserve()
+    }
 
+    private fun initObserve() {
         collectLatestStateFlow(certificationViewModel.verifiedResult) {
             if (it.meta?.status == true) {
                 certificationViewModel.saveUserSignIn(true)
@@ -54,7 +57,7 @@ class CertificationPhoneFragment : Fragment() {
         }
     }
 
-    private fun setTextChangedListener() {
+    private fun setupTextChangedListener() {
         binding.editTextPhoneNumber.addTextChangedListener {
             binding.textInputLayoutPhoneNumber.isErrorEnabled = false
         }
@@ -64,7 +67,7 @@ class CertificationPhoneFragment : Fragment() {
         }
     }
 
-    private fun setClickListener() {
+    private fun setupClickListener() {
         binding.buttonGetCertification.setOnClickListener {
             if (!certificationViewModel.isValidationPhoneNumber(binding.editTextPhoneNumber.text.toString())) {
                 binding.textInputLayoutPhoneNumber.apply {

@@ -2,7 +2,7 @@ package com.hampson.asta.domain.model
 
 import com.hampson.asta.domain.util.CategoryType
 import com.hampson.asta.domain.util.ProductType
-import com.hampson.asta.domain.util.TransactionType
+import com.hampson.asta.domain.util.TradeType
 
 data class Product(
     val id: Int? = null,
@@ -17,6 +17,28 @@ data class Product(
     val deadline: String? = null, // 마감일
     val bidderCount: Int? = null, // 입찰자 수
     val status: ProductType? = null, // 상품 status
-    val transaction: TransactionType? = null, // 거래 방식
+    val transaction: TradeType? = null, // 거래 방식
     val category: CategoryType? = null // 카테고리
-)
+) {
+    enum class PriceType {
+        START,
+        CURRENT,
+        HOPE,
+        INCREASE;
+
+        fun priceInfo(): ArrayList<String> {
+            return when (this) {
+                START -> arrayListOf(
+                    "ㆍ시작가격 부터 입찰이 시작됩니다."
+                )
+                HOPE -> arrayListOf(
+                    "ㆍ희망가격 이상으로 입찰 될 경우 바로 낙찰됩니다."
+                )
+                INCREASE -> arrayListOf(
+                    "ㆍ입찰 시 올라가는 금액입니다."
+                )
+                else -> arrayListOf()
+            }
+        }
+    }
+}
