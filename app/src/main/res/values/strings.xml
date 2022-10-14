@@ -47,6 +47,9 @@
     <string name="price_start">시작 가격</string>
     <string name="price_increase">호가 (증액)</string>
     <string name="deadline_auction">경매 종료일</string>
+    <string name="price_info_start_1">ㆍ시작가격 부터 입찰이 시작됩니다.</string>
+    <string name="price_info_hope_1">ㆍ희망가격 이상으로 입찰 될 경우 바로 낙찰됩니다.</string>
+    <string name="price_info_increase_1">ㆍ입찰 시 올라가는 금액입니다.</string>
 
     <string name="home">실시간 경매</string>
     <string name="my_page">마이페이지</string>
@@ -82,4 +85,25 @@
     <string name="fashion">패션</string>
     <string name="food">식품</string>
     <string name="scarcity">희소가치</string>
+
+    // 제품상태
+    <string name="condition_new">새상품</string>
+    <string name="condition_best">상태 최상</string>
+    <string name="condition_good">상태 양호</string>
+    <string name="condition_usually">상태 보통</string>
+    <string name="condition_limited_edition">리미티드 에디션</string>
+    <string name="condition_collectible">소장가치</string>
+
+    // 제품상태 설명
+    <string name="condition_info_new">미사용 및 미개봉인 상태</string>
+    <string name="condition_info_best">사용은 하였지만 새 제품과 다름없는 상태</string>
+    <string name="condition_info_good">사용감이 미세하게 있는 상태</string>
+    <string name="condition_info_usually">사용감이 있는 상태</string>
+    <string name="condition_info_limited_edition">한정판 또는 구할 수 없는 상품</string>
+    <string name="condition_info_collectible">희소하거나 소장가치가 있는 상품</string>
+
+    // 거래 방법
+    <string name="trade_parcel">택배</string>
+    <string name="trade_direct_transaction">직거래</string>
+    <string name="trade_negotiable">택배 | 직거래</string>
 </resources>

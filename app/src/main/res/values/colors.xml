@@ -8,11 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="red">#E14242</color>
+    <color name="red">#E54B4B</color>
     <color name="app_red">#FF5A5A</color>
     <color name="red_light">#FFFCFC</color>
     <color name="color_FFB9B9">#FFB9B9</color>
     <color name="color_FFEFEF">#FFEFEF</color>
+    <color name="color_FFFFF8">#FFFFF8</color>
+    <color name="color_FFF2E6">#FFF2E6</color>
     <color name="color_444444">#444444</color>
     <color name="color_747474">#747474</color>
     <color name="color_bdbdbd">#BDBDBD</color>

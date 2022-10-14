@@ -1,23 +1,35 @@
 package com.hampson.asta.domain.util
 
-enum class ConditionType(
-    val conditionName: String
-) {
-    NEW("새상품"),
-    BEST("상태 최상"),
-    GOOD("상태 양호"),
-    USUALLY("상태 보통"),
-    LIMITED_EDITION("리미티드 에디션"),
-    COLLECTIBLE("소장가치");
+import android.content.Context
+import com.hampson.asta.R
 
-    fun conditionExplanation(): String {
+enum class ConditionType {
+    NEW,
+    BEST,
+    GOOD,
+    USUALLY,
+    LIMITED_EDITION,
+    COLLECTIBLE;
+
+    fun conditionName(context: Context): String {
         return when (this) {
-            NEW -> "미사용 및 미개봉인 상태"
-            BEST -> "사용은 하였지만 새 제품과 다름없는 상태"
-            GOOD -> "사용감이 미세하게 있는 상태"
-            USUALLY -> "사용감이 있는 상태"
-            LIMITED_EDITION -> "한정판 또는 구할 수 없는 제품"
-            COLLECTIBLE -> "희소하거나 소장가치가 있는 제품"
+            NEW -> context.getString(R.string.condition_new)
+            BEST -> context.getString(R.string.condition_best)
+            GOOD -> context.getString(R.string.condition_good)
+            USUALLY -> context.getString(R.string.condition_usually)
+            LIMITED_EDITION -> context.getString(R.string.condition_limited_edition)
+            COLLECTIBLE -> context.getString(R.string.condition_collectible)
+        }
+    }
+
+    fun conditionExplanation(context: Context): String {
+        return when (this) {
+            NEW -> context.getString(R.string.condition_info_new)
+            BEST -> context.getString(R.string.condition_info_best)
+            GOOD -> context.getString(R.string.condition_info_good)
+            USUALLY -> context.getString(R.string.condition_info_usually)
+            LIMITED_EDITION -> context.getString(R.string.condition_info_limited_edition)
+            COLLECTIBLE -> context.getString(R.string.condition_info_collectible)
         }
     }
 }

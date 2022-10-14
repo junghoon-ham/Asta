@@ -40,7 +40,7 @@ class TradeAdapter() :
     inner class MyViewHolder(val binding: ItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindItem(item: TradeType) {
-            binding.textViewTitle.text = item.tradeName
+            binding.textViewTitle.text = item.tradeName(context!!)
 
             binding.root.setOnClickListener {
                 onItemClickListener?.let { it(item) }

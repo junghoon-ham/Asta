@@ -15,8 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PriceBottomSheetDialog(
-    private val priceType: Product.PriceType,
-    private val priceInfoList: ArrayList<String>
+    private val priceType: Product.PriceType
 ) : BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetDialogRegisterPriceBinding? = null
@@ -70,9 +69,8 @@ class PriceBottomSheetDialog(
     }
 
     private fun bindInfo() {
-        for (info in priceInfoList) {
+        for (info in priceType.priceInfo(context ?: requireContext())) {
             addPriceInfo(info)
-
         }
     }
 

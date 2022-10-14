@@ -1,9 +1,18 @@
 package com.hampson.asta.domain.util
 
-enum class TradeType(
-    val tradeName: String
-) {
-    PARCEL("택배"),
-    DIRECT_TRANSACTION("직거래"),
-    NEGOTIABLE("택배 | 직거래");
+import android.content.Context
+import com.hampson.asta.R
+
+enum class TradeType {
+    PARCEL,
+    DIRECT_TRANSACTION,
+    NEGOTIABLE;
+
+    fun tradeName(context: Context): String {
+        return when (this) {
+            PARCEL -> context.getString(R.string.trade_parcel)
+            DIRECT_TRANSACTION -> context.getString(R.string.trade_direct_transaction)
+            NEGOTIABLE -> context.getString(R.string.trade_negotiable)
+        }
+    }
 }

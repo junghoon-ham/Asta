@@ -55,27 +55,27 @@ class RegisterAuctionFragment : BaseFragment() {
 
         collectLatestStateFlow(viewModel.condition) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(binding.textViewCondition, it.conditionName)
+            bindUI(binding.textViewCondition, it.conditionName(context ?: requireContext()))
         }
 
         collectLatestStateFlow(viewModel.trade) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(binding.textViewTrade, it.tradeName)
+            bindUI(binding.textViewTrade, it.tradeName(context ?: requireContext()))
         }
 
         collectLatestStateFlow(viewModel.priceStart) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(binding.textViewPriceStart, "${dec.format(it)}원")
+            bindUI(binding.textViewPriceStart, "시작가 ${dec.format(it)}원")
         }
 
         collectLatestStateFlow(viewModel.priceHope) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(binding.textViewPriceHope, "${dec.format(it)}원")
+            bindUI(binding.textViewPriceHope, "희망가 ${dec.format(it)}원")
         }
 
         collectLatestStateFlow(viewModel.priceIncrease) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(binding.textViewPriceIncrease, "${dec.format(it)}원")
+            bindUI(binding.textViewPriceIncrease, "호가 ${dec.format(it)}원")
         }
     }
 
@@ -109,24 +109,21 @@ class RegisterAuctionFragment : BaseFragment() {
 
         binding.constraintLayoutPriceHope.setOnClickListener {
             val bottomSheetDialog = PriceBottomSheetDialog(
-                priceType = Product.PriceType.HOPE,
-                priceInfoList = Product.PriceType.HOPE.priceInfo()
+                priceType = Product.PriceType.HOPE
             )
             bottomSheetDialog.show(requireActivity().supportFragmentManager, "")
         }
 
         binding.constraintLayoutPriceStart.setOnClickListener {
             val bottomSheetDialog = PriceBottomSheetDialog(
-                priceType = Product.PriceType.START,
-                priceInfoList = Product.PriceType.START.priceInfo()
+                priceType = Product.PriceType.START
             )
             bottomSheetDialog.show(requireActivity().supportFragmentManager, "")
         }
 
         binding.constraintLayoutPriceIncrease.setOnClickListener {
             val bottomSheetDialog = PriceBottomSheetDialog(
-                priceType = Product.PriceType.INCREASE,
-                priceInfoList = Product.PriceType.INCREASE.priceInfo()
+                priceType = Product.PriceType.INCREASE
             )
             bottomSheetDialog.show(requireActivity().supportFragmentManager, "")
         }

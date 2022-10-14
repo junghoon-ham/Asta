@@ -1,5 +1,7 @@
 package com.hampson.asta.domain.model
 
+import android.content.Context
+import com.hampson.asta.R
 import com.hampson.asta.domain.util.CategoryType
 import com.hampson.asta.domain.util.ProductType
 import com.hampson.asta.domain.util.TradeType
@@ -26,16 +28,18 @@ data class Product(
         HOPE,
         INCREASE;
 
-        fun priceInfo(): ArrayList<String> {
+        fun priceInfo(
+            context: Context
+        ): ArrayList<String> {
             return when (this) {
                 START -> arrayListOf(
-                    "ㆍ시작가격 부터 입찰이 시작됩니다."
+                    context.getString(R.string.price_info_start_1)
                 )
                 HOPE -> arrayListOf(
-                    "ㆍ희망가격 이상으로 입찰 될 경우 바로 낙찰됩니다."
+                    context.getString(R.string.price_info_hope_1)
                 )
                 INCREASE -> arrayListOf(
-                    "ㆍ입찰 시 올라가는 금액입니다."
+                    context.getString(R.string.price_info_increase_1)
                 )
                 else -> arrayListOf()
             }

@@ -40,8 +40,8 @@ class ConditionAdapter() :
     inner class MyViewHolder(val binding: ItemConditionBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindItem(item: ConditionType) {
-            binding.textViewCondition.text = item.conditionName
-            binding.textViewExplanation.text = item.conditionExplanation()
+            binding.textViewCondition.text = item.conditionName(context!!)
+            binding.textViewExplanation.text = item.conditionExplanation(context!!)
 
             binding.root.setOnClickListener {
                 onItemClickListener?.let { it(item) }
