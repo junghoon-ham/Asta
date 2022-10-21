@@ -52,6 +52,7 @@
     <string name="price_info_hope_1">ㆍ희망가격 이상으로 입찰 될 경우 바로 낙찰됩니다.</string>
     <string name="price_info_increase_1">ㆍ입찰 시 올라가는 금액입니다.</string>
     <string name="trade_select">거래 방법 선택</string>
+    <string name="select_auction_product">경매 상품 선택</string>
 
     <string name="home">실시간 경매</string>
     <string name="my_page">마이페이지</string>

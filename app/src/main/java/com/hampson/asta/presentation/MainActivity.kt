@@ -18,7 +18,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.app.imagepickerlibrary.ui.bottomsheet.SSPickerOptionsBottomSheet
 import com.hampson.asta.R
 import com.hampson.asta.databinding.ActivityMainBinding
 import com.hampson.asta.presentation.connect.ConnectViewModel
@@ -52,10 +51,6 @@ class MainActivity : AppCompatActivity() {
 
         setupJetpackNavigation()
         setupClickListener()
-
-        val fragment =
-            SSPickerOptionsBottomSheet.newInstance()
-        fragment.show(supportFragmentManager, SSPickerOptionsBottomSheet.BOTTOM_SHEET_TAG)
     }
 
     private fun setupClickListener() {
