@@ -20,6 +20,6 @@ class RegisterAuctionViewModel @Inject constructor(
     val priceHope = MutableStateFlow<Int?>(null)
     val priceIncrease = MutableStateFlow<Int?>(null)
     val days = MutableStateFlow<Int?>(null)
-    val endTime = MutableStateFlow<String?>(null)
-
+    val hour = MutableStateFlow<Int?>(null)
+    val minute = MutableStateFlow<Int?>(null)
 }

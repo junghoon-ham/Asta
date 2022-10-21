@@ -12,11 +12,18 @@ import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import com.hampson.asta.R
 import com.hampson.asta.databinding.FragmentRegisterAuctionBinding
 import com.hampson.asta.domain.model.Product
 import com.hampson.asta.presentation.BaseFragment
 import com.hampson.asta.presentation.MainActivity
+import com.hampson.asta.presentation.register_auction.category.CategoryBottomSheetDialog
+import com.hampson.asta.presentation.register_auction.condition.ConditionBottomSheetDialog
+import com.hampson.asta.presentation.register_auction.deadline.DeadlineBottomSheetDialog
+import com.hampson.asta.presentation.register_auction.price.PriceBottomSheetDialog
+import com.hampson.asta.presentation.register_auction.trade.TradeBottomSheetDialog
 import com.hampson.asta.util.collectLatestStateFlow
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.DecimalFormat
@@ -77,6 +84,27 @@ class RegisterAuctionFragment : BaseFragment() {
             if (it == null) return@collectLatestStateFlow
             bindUI(binding.textViewPriceIncrease, "호가 ${dec.format(it)}원")
         }
+
+        collectLatestStateFlow(viewModel.days) {
+            if (it == null) return@collectLatestStateFlow
+            bindUI(binding.textViewDeadlineDate, "${it}일 후")
+        }
+
+        collectLatestStateFlow(viewModel.hour) {
+            if (it == null) return@collectLatestStateFlow
+            bindUI(
+                binding.textViewDeadlineTime,
+                "${viewModel.hour.value}시 ${viewModel.minute.value}분에 마감"
+            )
+        }
+
+        collectLatestStateFlow(viewModel.minute) {
+            if (it == null) return@collectLatestStateFlow
+            bindUI(
+                binding.textViewDeadlineTime,
+                "${viewModel.hour.value}시 ${viewModel.minute.value}분에 마감"
+            )
+        }
     }
 
     @SuppressLint("ResourceAsColor")
@@ -128,6 +156,16 @@ class RegisterAuctionFragment : BaseFragment() {
             bottomSheetDialog.show(requireActivity().supportFragmentManager, "")
         }
 
+        binding.constraintLayoutDeadlineDate.setOnClickListener {
+            val bottomSheetDialog = DeadlineBottomSheetDialog()
+            bottomSheetDialog.show(requireActivity().supportFragmentManager, "")
+        }
+
+        binding.constraintLayoutDeadlineTime.setOnClickListener {
+            setupTimePicker()
+
+        }
+
         binding.buttonRegisterAuction.setOnClickListener {
 
             MaterialAlertDialogBuilder(
@@ -147,6 +185,23 @@ class RegisterAuctionFragment : BaseFragment() {
 
         binding.buttonOpenGallery.setOnClickListener {
             openGalley()
+        }
+    }
+
+    private fun setupTimePicker() {
+        val timePicker =
+            MaterialTimePicker.Builder()
+                .setTimeFormat(TimeFormat.CLOCK_12H)
+                .setPositiveButtonText("확인")
+                .setNegativeButtonText("취소")
+                .setTitleText("마감 시간")
+                .setInputMode(MaterialTimePicker.INPUT_MODE_KEYBOARD)
+                .build()
+
+        timePicker.show(requireActivity().supportFragmentManager, "")
+        timePicker.addOnPositiveButtonClickListener {
+            viewModel.hour.value = timePicker.hour
+            viewModel.minute.value = timePicker.minute
         }
     }
 

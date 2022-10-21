@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.SimformSolutionsPvtLtd:SSImagePicker:2.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b8acbb5fa440875b3c9ea59c5def92c2/transformed/SSImagePicker-2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b8acbb5fa440875b3c9ea59c5def92c2/transformed/SSImagePicker-2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b8acbb5fa440875b3c9ea59c5def92c2/transformed/SSImagePicker-2.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

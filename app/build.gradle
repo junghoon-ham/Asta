@@ -36,6 +36,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
     kapt {
         correctErrorTypes true
@@ -123,4 +124,7 @@ dependencies {
 
     // image slider
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
+
+    // image picker
+    implementation 'com.github.SimformSolutionsPvtLtd:SSImagePicker:2.0'
 }

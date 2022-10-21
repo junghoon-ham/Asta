@@ -46,10 +46,12 @@
     <string name="price_hope">희망 가격</string>
     <string name="price_start">시작 가격</string>
     <string name="price_increase">호가 (증액)</string>
-    <string name="deadline_auction">경매 종료일</string>
+    <string name="deadline_date">경매 종료일</string>
+    <string name="deadline_time">경매 마감시간</string>
     <string name="price_info_start_1">ㆍ시작가격 부터 입찰이 시작됩니다.</string>
     <string name="price_info_hope_1">ㆍ희망가격 이상으로 입찰 될 경우 바로 낙찰됩니다.</string>
     <string name="price_info_increase_1">ㆍ입찰 시 올라가는 금액입니다.</string>
+    <string name="trade_select">거래 방법 선택</string>
 
     <string name="home">실시간 경매</string>
     <string name="my_page">마이페이지</string>
@@ -74,6 +76,7 @@
     <string name="comment_by_me">내가 작성한 댓글</string>
     <string name="appraisal_by_me">내가 평가한 상품</string>
     <string name="please_input_price">금액을 입력해 주세요.</string>
+    <string name="deadline">경매 종료일</string>
 
     // 카테고리
     <string name="digital">디지털 기기</string>
