@@ -1,15 +1,18 @@
 package com.hampson.asta.presentation.register_auction
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
+import com.app.imagepickerlibrary.ImagePicker
+import com.app.imagepickerlibrary.ImagePicker.Companion.registerImagePicker
+import com.app.imagepickerlibrary.listener.ImagePickerResultListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.hampson.asta.R
@@ -17,17 +20,22 @@ import com.hampson.asta.databinding.FragmentRegisterAuctionBinding
 import com.hampson.asta.domain.model.Product
 import com.hampson.asta.presentation.BaseFragment
 import com.hampson.asta.presentation.MainActivity
+import com.hampson.asta.util.PickerOptions
 import com.hampson.asta.util.collectLatestStateFlow
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.DecimalFormat
 
 
 @AndroidEntryPoint
-class RegisterAuctionFragment : BaseFragment() {
+class RegisterAuctionFragment : BaseFragment(), ImagePickerResultListener {
     private var _binding: FragmentRegisterAuctionBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel by activityViewModels<RegisterAuctionViewModel>()
+
+    private lateinit var imagePicker: ImagePicker
+
+    private lateinit var adapter: ImagesPickAdapter
 
     val dec = DecimalFormat("#,###")
 
@@ -43,8 +51,25 @@ class RegisterAuctionFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        imagePicker = registerImagePicker(this)
+
+        setupRecyclerView()
         setupClickListener()
         setupObserve()
+    }
+
+    private fun setupRecyclerView() {
+        adapter = ImagesPickAdapter(null).apply {
+            context = this@RegisterAuctionFragment.context
+        }
+
+        binding.recyclerView.apply {
+            adapter = this@RegisterAuctionFragment.adapter
+
+            (adapter as ImagesPickAdapter).setOnItemClickListener {
+                (adapter as ImagesPickAdapter).removeImage(it)
+            }
+        }
     }
 
     private fun setupObserve() {
@@ -146,16 +171,36 @@ class RegisterAuctionFragment : BaseFragment() {
         }
 
         binding.buttonOpenGallery.setOnClickListener {
-            openGalley()
+            openImagePicker()
         }
     }
 
-    private fun openGalley() {
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
-        intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent, "Selcet Picture"), 123)
+
+    private fun openImagePicker() {
+        val pickerOptions = PickerOptions.default()
+
+        imagePicker
+            .title(getString(R.string.select_auction_product))
+            .multipleSelection(pickerOptions.allowMultipleSelection, pickerOptions.maxPickCount)
+            .showCountInToolBar(pickerOptions.showCountInToolBar)
+            .showFolder(pickerOptions.showFolders)
+            .cameraIcon(pickerOptions.showCameraIconInGallery)
+            .doneIcon(pickerOptions.isDoneIcon)
+            .allowCropping(pickerOptions.openCropOptions)
+            .compressImage(pickerOptions.compressImage)
+            .maxImageSize(pickerOptions.maxPickSizeMB)
+            .extension(pickerOptions.pickExtension)
+
+        imagePicker.open(pickerOptions.pickerType)
+    }
+
+    override fun onImagePick(uri: Uri?) {
+        if (uri == null) return
+        adapter.replaceImages(arrayListOf(uri))
+    }
+
+    override fun onMultiImagePick(uris: List<Uri>?) {
+        adapter.replaceImages(ArrayList(uris ?: arrayListOf()))
     }
 
     override fun onDestroyView() {

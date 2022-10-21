@@ -95,9 +95,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.fragment_detail_auction,
                 R.id.fragment_detail_appraisal -> supportActionBar?.hide()
                 R.id.fragment_home,
-                R.id.fragment_appraisal -> setupMenuProvider(mainMenuId)
-                R.id.fragment_my_page -> setupMenuProvider(myPageMenuId)
-                else -> setupMenuProvider(defaultMenuId)
+                R.id.fragment_appraisal        -> setupMenuProvider(mainMenuId)
+                R.id.fragment_my_page          -> setupMenuProvider(myPageMenuId)
+                else                           -> setupMenuProvider(defaultMenuId)
             }
         }
     }
@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.fragment_detail_auction,
                 R.id.fragment_detail_appraisal -> supportActionBar?.hide()
-                else -> supportActionBar?.show()
+                else                           -> supportActionBar?.show()
             }
         }
     }
@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.fragment_home,
                 R.id.fragment_appraisal -> binding.floatingActionMenu.isVisible = true
-                else -> binding.floatingActionMenu.isGone = true
+                else                    -> binding.floatingActionMenu.isGone = true
             }
         }
     }
@@ -145,9 +145,9 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_wish_list -> {}
-            R.id.menu_category -> navigateFragment(R.id.fragment_category)
-            R.id.menu_search -> {}
-            else -> onBackPressed()
+            R.id.menu_category  -> navigateFragment(R.id.fragment_category)
+            R.id.menu_search    -> {}
+            else                -> onBackPressed()
         }
 
         return super.onOptionsItemSelected(item)
