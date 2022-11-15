@@ -9,6 +9,7 @@
     <string name="please_certification_phone_number">휴대폰 번호를 인증해 주세요.</string>
     <string name="register_with_phone_number">아스타는 휴대폰 번호로 가입해요.</string>
     <string name="input_phone_number">휴대폰 번호를 입력해주세요.</string>
+    <string name="input_product_name">상품명을 입력해주세요.</string>
     <string name="input_certification_number">인증 번호를 입력해주세요.</string>
     <string name="get_certification_number">인증문자 받기</string>
     <string name="confirm_certification_number">인증번호 확인</string>
@@ -53,6 +54,12 @@
     <string name="price_info_increase_1">ㆍ입찰 시 올라가는 금액입니다.</string>
     <string name="trade_select">거래 방법 선택</string>
     <string name="select_auction_product">경매 상품 선택</string>
+    <string name="guide">안내</string>
+    <string name="cancel">취소</string>
+    <string name="ok">확인</string>
+    <string name="check_register_auction">경매를 등록하시겠습니까?</string>
+    <string name="success_register_auction">경매등록이 완료되었습니다.</string>
+    <string name="empty_search">검색 결과가 없습니다.</string>
 
     <string name="home">실시간 경매</string>
     <string name="my_page">마이페이지</string>

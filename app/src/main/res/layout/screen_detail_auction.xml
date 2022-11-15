@@ -174,138 +174,80 @@
             android:layout_height="4dp"
             android:background="@color/color_f2f2f2" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint_layout_profile"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
+            android:orientation="horizontal"
             android:paddingStart="16dp"
-            android:paddingTop="32dp"
+            android:paddingTop="24dp"
             android:paddingEnd="16dp"
-            android:paddingBottom="32dp">
+            android:paddingBottom="24dp"
+            android:weightSum="2">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_view_profile"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                app:cardBackgroundColor="#EAEAEA"
-                app:cardCornerRadius="60dp"
-                app:cardElevation="0dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/image_view_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/ic_baseline_person_60_white" />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/text_view_name"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="함정훈"
-                android:textColor="@color/color_444444"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/card_view_profile"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_weight="1">
 
-            <ImageView
-                android:id="@id/image_view_badge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_baseline_badge_24"
-                app:layout_constraintStart_toEndOf="@+id/card_view_profile"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_name" />
+                <TextView
+                    android:id="@+id/text_view_title_condition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/product_condition"
+                    android:textColor="@color/color_444444"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+                <Button
+                    android:id="@+id/button_condition"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:drawablePadding="4dp"
+                    android:gravity="center"
+                    android:text="리미티드 에디션"
+                    android:textColor="@color/color_444444"
+                    android:textSize="14sp"
+                    app:icon="@drawable/ic_outline_info_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_title_condition" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@string/certified_member"
-                android:textColor="@color/color_444444"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/image_view_badge"
-                app:layout_constraintStart_toEndOf="@+id/image_view_badge"
-                app:layout_constraintTop_toTopOf="@+id/image_view_badge" />
-
-            <TextView
-                android:id="@+id/text_view_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="5.0"
-                android:textColor="@color/color_444444"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/card_view_profile"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/card_view_profile" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/ic_baseline_star_24"
-                app:layout_constraintBottom_toBottomOf="@+id/card_view_profile"
-                app:layout_constraintEnd_toStartOf="@+id/text_view_rating"
-                app:layout_constraintTop_toTopOf="@+id/card_view_profile" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/card_view_profile">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_outline_info_24" />
+                android:layout_weight="1">
 
                 <TextView
+                    android:id="@+id/text_view_title_trade"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="경매 3회"
+                    android:text="@string/trade"
                     android:textColor="@color/color_444444"
-                    android:textSize="12sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:src="@drawable/ic_outline_info_24" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/text_view_trade"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="철회 1회"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="4dp"
+                    android:drawablePadding="4dp"
+                    android:gravity="center"
+                    android:text="택배 | 직거래"
                     android:textColor="@color/color_444444"
-                    android:textSize="12sp" />
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_title_trade" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:src="@drawable/ic_outline_info_24" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="거래 성사율 90%"
-                    android:textColor="@color/color_444444"
-                    android:textSize="12sp" />
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -502,6 +444,144 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraint_layout_bid_3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@color/color_f2f2f2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="16dp"
+            android:paddingTop="32dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="32dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_profile"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:cardBackgroundColor="#EAEAEA"
+                app:cardCornerRadius="60dp"
+                app:cardElevation="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/image_view_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_baseline_person_60_white" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/text_view_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="함정훈"
+                android:textColor="@color/color_444444"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/card_view_profile"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@id/image_view_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_baseline_badge_24"
+                app:layout_constraintStart_toEndOf="@+id/card_view_profile"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_name" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/certified_member"
+                android:textColor="@color/color_444444"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/image_view_badge"
+                app:layout_constraintStart_toEndOf="@+id/image_view_badge"
+                app:layout_constraintTop_toTopOf="@+id/image_view_badge" />
+
+            <TextView
+                android:id="@+id/text_view_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5.0"
+                android:textColor="@color/color_444444"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/card_view_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/card_view_profile" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_baseline_star_24"
+                app:layout_constraintBottom_toBottomOf="@+id/card_view_profile"
+                app:layout_constraintEnd_toStartOf="@+id/text_view_rating"
+                app:layout_constraintTop_toTopOf="@+id/card_view_profile" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/card_view_profile">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_outline_info_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="경매 3회"
+                    android:textColor="@color/color_444444"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_outline_info_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="철회 1회"
+                    android:textColor="@color/color_444444"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_outline_info_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="거래 성사율 90%"
+                    android:textColor="@color/color_444444"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View

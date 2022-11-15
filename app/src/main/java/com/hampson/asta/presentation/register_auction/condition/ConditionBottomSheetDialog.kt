@@ -14,6 +14,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.hampson.asta.R
 import com.hampson.asta.databinding.BottomSheetDialogRecyclerViewBinding
+import com.hampson.asta.presentation.explanation_bottom_sheet.condition.ExplanationConditionAdapter
 import com.hampson.asta.presentation.register_auction.RegisterAuctionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -66,12 +67,12 @@ class ConditionBottomSheetDialog :
 
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
-            adapter = ConditionAdapter().apply {
+            adapter = ExplanationConditionAdapter().apply {
                 context = this@ConditionBottomSheetDialog.context
             }
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
-            (adapter as ConditionAdapter).setOnItemClickListener {
+            (adapter as ExplanationConditionAdapter).setOnItemClickListener {
                 viewModel.condition.value = it
                 dismiss()
             }

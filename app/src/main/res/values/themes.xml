@@ -73,7 +73,6 @@
 
     <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <!--<item name="materialThemeOverlay">@style/ThemeOverlay.App.Button</item>-->
-        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
         <item name="android:textSize">16sp</item>
     </style>
 
@@ -83,8 +82,7 @@
     </style>
 
     <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
-        <item name="cornerFamily">cut</item>
-        <item name="cornerSize">8dp</item>
+        <item name="cornerSize">24dp</item>
     </style>
 
     <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">

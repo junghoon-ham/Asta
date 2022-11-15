@@ -5,4 +5,5 @@ object Constants {
     const val DATASTORE_NAME = "preferences_datastore"
 
     const val REG_PHONE_NUMBER = "^(\\d{10,11}|\\d{3}-\\d{3,4}-\\d{4})\$"
+    const val SEARCH_PRODUCT_TIME_DELAY = 100L
 }

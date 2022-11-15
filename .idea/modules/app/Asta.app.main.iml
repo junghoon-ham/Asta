@@ -29,6 +29,7 @@
           <stringArguments>
             <stringArg name="classpath">
               <args>
+                <arg>$MODULE_DIR$/../../../app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/9919419fec5120dd181b69bc14f9fc80/transformed/SSImagePicker-2.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/098658c72a89bbe057267f3dff056abf/transformed/databinding-runtime-7.2.2-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/4bacda1feb0b778ef0c5c9a94b7a2e86/transformed/viewbinding-7.2.2-api.jar</arg>

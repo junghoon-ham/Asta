@@ -41,7 +41,6 @@ class ImagesPickAdapter(
     inner class MyViewHolder(val binding: ItemRegisterProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindItem(item: Uri?) {
-            binding.imageViewProduct.setImageURI(item)
 
             Glide
                 .with(context!!)

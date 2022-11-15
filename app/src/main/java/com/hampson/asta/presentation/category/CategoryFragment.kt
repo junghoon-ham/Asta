@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hampson.asta.databinding.FragmentCategoryBinding
 import com.hampson.asta.presentation.BaseFragment
@@ -14,6 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class CategoryFragment : BaseFragment() {
     private var _binding: FragmentCategoryBinding? = null
     private val binding get() = _binding!!
+
+    private val args by navArgs<CategoryArg>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +41,9 @@ class CategoryFragment : BaseFragment() {
             }
 
             (adapter as CategoryAdapter).setOnItemClickListener {
-
+                val action =
+                    CategoryFragmentDirections.actionFragmentCategoryToFragmentProductList()
+                findNavController().navigate(action)
             }
         }
     }

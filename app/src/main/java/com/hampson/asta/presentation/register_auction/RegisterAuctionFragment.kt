@@ -10,37 +10,38 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
-import com.app.imagepickerlibrary.ImagePicker
-import com.app.imagepickerlibrary.ImagePicker.Companion.registerImagePicker
-import com.app.imagepickerlibrary.listener.ImagePickerResultListener
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.hampson.asta.R
 import com.hampson.asta.databinding.FragmentRegisterAuctionBinding
 import com.hampson.asta.domain.model.Product
 import com.hampson.asta.presentation.BaseFragment
+import com.hampson.asta.presentation.ImagePickerListener
 import com.hampson.asta.presentation.MainActivity
 import com.hampson.asta.presentation.register_auction.category.CategoryBottomSheetDialog
 import com.hampson.asta.presentation.register_auction.condition.ConditionBottomSheetDialog
 import com.hampson.asta.presentation.register_auction.deadline.DeadlineBottomSheetDialog
 import com.hampson.asta.presentation.register_auction.price.PriceBottomSheetDialog
 import com.hampson.asta.presentation.register_auction.trade.TradeBottomSheetDialog
-import com.hampson.asta.util.PickerOptions
 import com.hampson.asta.util.collectLatestStateFlow
+import com.hampson.asta.util.showSnackBar
+import com.hampson.asta.util.showTwoButtonDialog
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.DecimalFormat
 
 
 @AndroidEntryPoint
-class RegisterAuctionFragment : BaseFragment(), ImagePickerResultListener {
+class RegisterAuctionFragment : BaseFragment(), ImagePickerListener {
     private var _binding: FragmentRegisterAuctionBinding? = null
     private val binding get() = _binding!!
 
+    companion object {
+        private const val IMAGE_LIST = "IMAGE_LIST"
+    }
+
     private val viewModel by activityViewModels<RegisterAuctionViewModel>()
 
-    private lateinit var imagePicker: ImagePicker
+    private var imageList = mutableListOf<Uri>()
 
     private lateinit var adapter: ImagesPickAdapter
 
@@ -58,11 +59,19 @@ class RegisterAuctionFragment : BaseFragment(), ImagePickerResultListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        imagePicker = registerImagePicker(this)
+        (activity as MainActivity).setImagePickerListener(this@RegisterAuctionFragment)
 
+        bindInitData()
         setupRecyclerView()
         setupClickListener()
+        setupFocusListener()
         setupObserve()
+    }
+
+    private fun bindInitData() {
+        imageList = viewModel.images.value.toMutableList()
+        binding.editTextTitle.setText(viewModel.title.value)
+        binding.editTextInformation.setText(viewModel.information.value)
     }
 
     private fun setupRecyclerView() {
@@ -70,11 +79,15 @@ class RegisterAuctionFragment : BaseFragment(), ImagePickerResultListener {
             context = this@RegisterAuctionFragment.context
         }
 
+        adapter.replaceImages(ArrayList(viewModel.images.value))
+
         binding.recyclerView.apply {
             adapter = this@RegisterAuctionFragment.adapter
 
             (adapter as ImagesPickAdapter).setOnItemClickListener {
                 (adapter as ImagesPickAdapter).removeImage(it)
+                imageList.remove(it)
+                viewModel.images.value = imageList
             }
         }
     }
@@ -82,58 +95,88 @@ class RegisterAuctionFragment : BaseFragment(), ImagePickerResultListener {
     private fun setupObserve() {
         collectLatestStateFlow(viewModel.category) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(binding.textViewCategory, it.categoryName(context))
+
+            bindUIAndWritingRegister(
+                textView = binding.textViewCategory,
+                dataName = it.categoryName(context)
+            )
         }
 
         collectLatestStateFlow(viewModel.condition) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(binding.textViewCondition, it.conditionName(context ?: requireContext()))
+
+            bindUIAndWritingRegister(
+                textView = binding.textViewCondition,
+                dataName = it.conditionName(context ?: requireContext())
+            )
         }
 
         collectLatestStateFlow(viewModel.trade) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(binding.textViewTrade, it.tradeName(context ?: requireContext()))
+
+            bindUIAndWritingRegister(
+                textView = binding.textViewTrade,
+                dataName = it.tradeName(context ?: requireContext())
+            )
         }
 
         collectLatestStateFlow(viewModel.priceStart) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(binding.textViewPriceStart, "시작가 ${dec.format(it)}원")
+
+            bindUIAndWritingRegister(
+                textView = binding.textViewPriceStart,
+                dataName = "시작가 ${dec.format(it)}원"
+            )
         }
 
         collectLatestStateFlow(viewModel.priceHope) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(binding.textViewPriceHope, "희망가 ${dec.format(it)}원")
+
+            bindUIAndWritingRegister(
+                textView = binding.textViewPriceHope,
+                dataName = "희망가 ${dec.format(it)}원"
+            )
         }
 
         collectLatestStateFlow(viewModel.priceIncrease) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(binding.textViewPriceIncrease, "호가 ${dec.format(it)}원")
+
+            bindUIAndWritingRegister(
+                textView = binding.textViewPriceIncrease,
+                dataName = "호가 ${dec.format(it)}원"
+            )
         }
 
         collectLatestStateFlow(viewModel.days) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(binding.textViewDeadlineDate, "${it}일 후")
+
+            bindUIAndWritingRegister(
+                textView = binding.textViewDeadlineDate,
+                dataName = "${it}일 후"
+            )
         }
 
         collectLatestStateFlow(viewModel.hour) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(
-                binding.textViewDeadlineTime,
-                "${viewModel.hour.value}시 ${viewModel.minute.value}분에 마감"
+
+            bindUIAndWritingRegister(
+                textView = binding.textViewDeadlineTime,
+                dataName = "${viewModel.hour.value}시 ${viewModel.minute.value}분에 마감"
             )
         }
 
         collectLatestStateFlow(viewModel.minute) {
             if (it == null) return@collectLatestStateFlow
-            bindUI(
-                binding.textViewDeadlineTime,
-                "${viewModel.hour.value}시 ${viewModel.minute.value}분에 마감"
+
+            bindUIAndWritingRegister(
+                textView = binding.textViewDeadlineTime,
+                dataName = "${viewModel.hour.value}시 ${viewModel.minute.value}분에 마감"
             )
         }
     }
 
     @SuppressLint("ResourceAsColor")
-    private fun bindUI(
+    private fun bindUIAndWritingRegister(
         textView: TextView,
         dataName: String?
     ) {
@@ -142,6 +185,8 @@ class RegisterAuctionFragment : BaseFragment(), ImagePickerResultListener {
             setTypeface(null, Typeface.BOLD)
             text = dataName
         }
+
+        viewModel.isWritingRegister.value = true
     }
 
     private fun setupClickListener() {
@@ -188,28 +233,37 @@ class RegisterAuctionFragment : BaseFragment(), ImagePickerResultListener {
 
         binding.constraintLayoutDeadlineTime.setOnClickListener {
             setupTimePicker()
-
         }
 
         binding.buttonRegisterAuction.setOnClickListener {
-
-            MaterialAlertDialogBuilder(
-                requireContext(),
-                R.style.ThemeOverlay_App_MaterialAlertDialog
-            ).setMessage("경매를 등록하시겠습니까?")
-                .setTitle("안내")
-                .setNegativeButton("취소") { dialog, which ->
-
-                }
-                .setPositiveButton("확인") { dialog, which ->
-                    Snackbar.make(it, "경매등록이 완료되었습니다.", Snackbar.LENGTH_SHORT).show()
+            showTwoButtonDialog(
+                context = context ?: requireContext(),
+                message = getString(R.string.check_register_auction),
+                onPositiveButton = {
+                    it.showSnackBar(getString(R.string.success_register_auction))
                     (activity as MainActivity).navController.popBackStack()
-                }
-                .show()
+                    viewModel.resetRegisterData()
+                },
+                onNegativeButton = {}
+            )
         }
 
         binding.buttonOpenGallery.setOnClickListener {
-            openImagePicker()
+            (activity as MainActivity).openImagePicker()
+        }
+    }
+
+    private fun setupFocusListener() {
+        binding.editTextInformation.setOnFocusChangeListener { _, focus ->
+            if (!focus) {
+                viewModel.information.value = binding.editTextInformation.text.toString()
+            }
+        }
+
+        binding.editTextTitle.setOnFocusChangeListener { _, focus ->
+            if (!focus) {
+                viewModel.title.value = binding.editTextTitle.text.toString()
+            }
         }
     }
 
@@ -230,35 +284,35 @@ class RegisterAuctionFragment : BaseFragment(), ImagePickerResultListener {
         }
     }
 
-    private fun openImagePicker() {
-        val pickerOptions = PickerOptions.default()
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
 
-        imagePicker
-            .title(getString(R.string.select_auction_product))
-            .multipleSelection(pickerOptions.allowMultipleSelection, pickerOptions.maxPickCount)
-            .showCountInToolBar(pickerOptions.showCountInToolBar)
-            .showFolder(pickerOptions.showFolders)
-            .cameraIcon(pickerOptions.showCameraIconInGallery)
-            .doneIcon(pickerOptions.isDoneIcon)
-            .allowCropping(pickerOptions.openCropOptions)
-            .compressImage(pickerOptions.compressImage)
-            .maxImageSize(pickerOptions.maxPickSizeMB)
-            .extension(pickerOptions.pickExtension)
-
-        imagePicker.open(pickerOptions.pickerType)
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putParcelableArrayList(IMAGE_LIST, ArrayList())
+        super.onSaveInstanceState(outState)
     }
 
     override fun onImagePick(uri: Uri?) {
         if (uri == null) return
+
+        imageList.clear()
+        imageList.add(uri)
         adapter.replaceImages(arrayListOf(uri))
+
+        viewModel.images.value = listOf(uri)
+        viewModel.isWritingRegister.value = true
     }
 
     override fun onMultiImagePick(uris: List<Uri>?) {
-        adapter.replaceImages(ArrayList(uris ?: arrayListOf()))
-    }
+        if (uris == null) return
 
-    override fun onDestroyView() {
-        _binding = null
-        super.onDestroyView()
+        imageList.clear()
+        imageList.addAll(uris.toMutableList())
+        adapter.replaceImages(ArrayList(uris))
+
+        viewModel.images.value = uris
+        viewModel.isWritingRegister.value = true
     }
 }

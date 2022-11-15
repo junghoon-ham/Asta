@@ -12,6 +12,7 @@ import com.hampson.asta.R
 import com.hampson.asta.databinding.FragmentDetailAuctionBinding
 import com.hampson.asta.domain.model.Product
 import com.hampson.asta.presentation.BaseFragment
+import com.hampson.asta.presentation.explanation_bottom_sheet.condition.ExplanationConditionBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
 
@@ -129,6 +130,11 @@ class DetailAuctionFragment : BaseFragment() {
 
         binding.includeScreen.constraintLayoutProfile.setOnClickListener {
             findNavController().navigate(actionProfile)
+        }
+
+        binding.includeScreen.buttonCondition.setOnClickListener {
+            val bottomSheetDialog = ExplanationConditionBottomSheetDialog()
+            bottomSheetDialog.show(requireActivity().supportFragmentManager, "")
         }
     }
 

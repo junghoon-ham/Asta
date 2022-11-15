@@ -1,9 +1,15 @@
 package com.hampson.asta.presentation
 
+import android.content.Context
+import android.graphics.Rect
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,19 +24,26 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.app.imagepickerlibrary.ImagePicker
+import com.app.imagepickerlibrary.ImagePicker.Companion.registerImagePicker
+import com.app.imagepickerlibrary.listener.ImagePickerResultListener
 import com.hampson.asta.R
 import com.hampson.asta.databinding.ActivityMainBinding
 import com.hampson.asta.presentation.connect.ConnectViewModel
+import com.hampson.asta.presentation.register_auction.RegisterAuctionViewModel
+import com.hampson.asta.util.PickerOptions
+import com.hampson.asta.util.showTwoButtonDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ImagePickerResultListener {
 
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
     private val connectViewModel by viewModels<ConnectViewModel>()
+    private val registerAuctionViewModel by viewModels<RegisterAuctionViewModel>()
 
     lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -40,6 +53,12 @@ class MainActivity : AppCompatActivity() {
     private val myPageMenuId = R.menu.my_page_app_bar_menu
 
     private lateinit var menuProvider: MenuProvider
+
+    private var imagePicker: ImagePicker? = registerImagePicker(this)
+    private var _imagePickerListener: ImagePickerListener? = null
+    fun setImagePickerListener(listener: ImagePickerListener) {
+        _imagePickerListener = listener
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen().apply {
@@ -55,14 +74,31 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupClickListener() {
         binding.buttonRegisterAuction.setOnClickListener {
-            navigateFragment(R.id.fragment_register_auction)
-            binding.floatingActionMenu.collapse()
+            if (registerAuctionViewModel.isWritingRegister.value) {
+                showTwoButtonDialog(
+                    context = this,
+                    title = "안내",
+                    message = "작성중인 경매등록이 있습니다.\n이어서 작성 하시겠습니까?",
+                    onNegativeButton = {
+                        registerAuctionViewModel.resetRegisterData()
+                        moveRegister()
+                    },
+                    onPositiveButton = { moveRegister() }
+                )
+            } else {
+                moveRegister()
+            }
         }
 
         binding.buttonRegisterAppraisal.setOnClickListener {
             Toast.makeText(this, "test", Toast.LENGTH_SHORT).show()
             binding.floatingActionMenu.collapse()
         }
+    }
+
+    private fun moveRegister() {
+        navigateFragment(R.id.fragment_register_auction)
+        binding.floatingActionMenu.collapse()
     }
 
     private fun setupJetpackNavigation() {
@@ -94,8 +130,7 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.fragment_detail_auction,
                 R.id.fragment_detail_appraisal -> supportActionBar?.hide()
-                R.id.fragment_home,
-                R.id.fragment_appraisal -> setupMenuProvider(mainMenuId)
+                R.id.fragment_home -> setupMenuProvider(mainMenuId)
                 R.id.fragment_my_page -> setupMenuProvider(myPageMenuId)
                 else -> setupMenuProvider(defaultMenuId)
             }
@@ -146,7 +181,7 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.menu_wish_list -> {}
             R.id.menu_category -> navigateFragment(R.id.fragment_category)
-            R.id.menu_search -> {}
+            R.id.menu_search -> navigateFragment(R.id.fragment_search)
             else -> onBackPressed()
         }
 
@@ -168,5 +203,51 @@ class MainActivity : AppCompatActivity() {
         }
 
         navController.navigate(fragment, null, options)
+    }
+
+    fun openImagePicker() {
+        val pickerOptions = PickerOptions.default()
+
+        if (imagePicker == null) return
+
+        imagePicker!!
+            .title(getString(R.string.select_auction_product))
+            .multipleSelection(pickerOptions.allowMultipleSelection, pickerOptions.maxPickCount)
+            .showCountInToolBar(pickerOptions.showCountInToolBar)
+            .showFolder(pickerOptions.showFolders)
+            .cameraIcon(pickerOptions.showCameraIconInGallery)
+            .doneIcon(pickerOptions.isDoneIcon)
+            .allowCropping(pickerOptions.openCropOptions)
+            .compressImage(pickerOptions.compressImage)
+            .maxImageSize(pickerOptions.maxPickSizeMB)
+            .extension(pickerOptions.pickExtension)
+
+        imagePicker?.open(pickerOptions.pickerType)
+    }
+
+    override fun onImagePick(uri: Uri?) {
+        _imagePickerListener?.onImagePick(uri)
+    }
+
+    override fun onMultiImagePick(uris: List<Uri>?) {
+        _imagePickerListener?.onMultiImagePick(uris)
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
+        if (event?.action == MotionEvent.ACTION_DOWN) {
+            if (currentFocus is EditText) {
+                val currentFocus = currentFocus as EditText
+                currentFocus.getGlobalVisibleRect(Rect())
+
+                if (!Rect().contains(event.rawX.toInt(), event.rawY.toInt())) {
+                    currentFocus.clearFocus()
+                    val imm: InputMethodManager =
+                        getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(currentFocus.windowToken, 0)
+                }
+            }
+        }
+
+        return super.dispatchTouchEvent(event)
     }
 }

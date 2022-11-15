@@ -5,9 +5,6 @@ import com.app.imagepickerlibrary.model.PickExtension
 import com.app.imagepickerlibrary.model.PickerType
 import kotlinx.parcelize.Parcelize
 
-/**
- * Data class to manage the picker options from bottom sheet to main activity.
- */
 @Parcelize
 data class PickerOptions(
     val pickerType: PickerType,
