@@ -179,7 +179,7 @@ class MainActivity : AppCompatActivity(), ImagePickerResultListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_wish_list -> {}
+            R.id.menu_wish_list -> navigateFragment(R.id.fragment_wish_list)
             R.id.menu_category -> navigateFragment(R.id.fragment_category)
             R.id.menu_search -> navigateFragment(R.id.fragment_search)
             else -> onBackPressed()

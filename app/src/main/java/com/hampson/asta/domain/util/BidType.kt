@@ -1,8 +1,11 @@
 package com.hampson.asta.domain.util
 
 enum class BidType {
-    PASSED, // 유찰
     BID, // 입찰
     FAIL, // 패찰
-    SUCCESS // 낙찰
+    SUCCESS, // 낙찰
+    WITHDRAW, // 철회 (판매자가 경매를 취소할때)
+
+    //TODO: test이후 삭제
+    NONE;
 }

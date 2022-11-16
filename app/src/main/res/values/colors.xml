@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
 
     <color name="red">#E54B4B</color>
     <color name="app_red">#FF5A5A</color>
@@ -21,4 +22,8 @@
     <color name="color_f2f2f2">#f2f2f2</color>
     <color name="color_ededed">#EDEDED</color>
     <color name="color_3162C7">#3162C7</color>
+    <color name="color_47C832">#47C832</color>
+    <color name="color_F15F5F">#F15F5F</color>
+    <color name="color_A6A6A6">#A6A6A6</color>
+    <color name="color_A566FF">#A566FF</color>
 </resources>

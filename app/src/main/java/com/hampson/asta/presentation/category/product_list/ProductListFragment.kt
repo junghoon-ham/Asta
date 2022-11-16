@@ -5,18 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hampson.asta.R
-import com.hampson.asta.databinding.FragmentHomeBinding
+import com.hampson.asta.databinding.FragmentProductListBinding
 import com.hampson.asta.domain.model.Product
 import com.hampson.asta.presentation.BaseFragment
+import com.hampson.asta.presentation.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProductListFragment : BaseFragment() {
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentProductListBinding? = null
     private val binding get() = _binding!!
+
+    private val args by navArgs<ProductListFragmentArgs>()
 
     private lateinit var adapter: TestAdapter
 
@@ -25,14 +29,14 @@ class ProductListFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentProductListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupToolbarTitle()
+        setupToolbarTitle(args.category.categoryName(context))
         setupRecyclerView()
     }
 
@@ -65,8 +69,8 @@ class ProductListFragment : BaseFragment() {
         }
     }
 
-    private fun setupToolbarTitle() {
-
+    private fun setupToolbarTitle(categoryName: String?) {
+        (activity as MainActivity).supportActionBar?.title = categoryName
     }
 
     private fun testCount(): Int {

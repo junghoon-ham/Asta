@@ -83,8 +83,27 @@
         android:label="@string/category"
         tools:layout="@layout/fragment_product_list">
 
+        <argument
+            android:name="category"
+            app:argType="com.hampson.asta.domain.util.CategoryType" />
+
         <action
             android:id="@+id/action_fragment_product_list_start_to_fragment_detail_auction"
+            app:destination="@id/fragment_detail_auction"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_wish_list"
+        android:name="com.hampson.asta.presentation.wish_list.WishListFragment"
+        android:label="@string/wish_list"
+        tools:layout="@layout/fragment_wish_list">
+
+        <action
+            android:id="@+id/action_fragment_wish_list_start_to_fragment_detail_auction"
             app:destination="@id/fragment_detail_auction"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
@@ -97,10 +116,6 @@
         android:name="com.hampson.asta.presentation.search.SearchFragment"
         android:label="@string/search"
         tools:layout="@layout/fragment_search">
-
-        <argument
-            android:name="category"
-            app:argType="com.hampson.asta.domain.util.CategoryType" />
 
         <action
             android:id="@+id/action_fragment_search_start_to_fragment_detail_auction"

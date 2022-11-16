@@ -2,6 +2,7 @@ package com.hampson.asta.domain.model
 
 import android.content.Context
 import com.hampson.asta.R
+import com.hampson.asta.domain.util.BidType
 import com.hampson.asta.domain.util.CategoryType
 import com.hampson.asta.domain.util.ProductType
 import com.hampson.asta.domain.util.TradeType
@@ -19,6 +20,8 @@ data class Product(
     val deadline: String? = null, // 마감일
     val bidderCount: Int? = null, // 입찰자 수
     val status: ProductType? = null, // 상품 status
+    //TODO: test이후 삭제 (statusBid)
+    val statusBid: BidType? = null,
     val transaction: TradeType? = null, // 거래 방식
     val category: CategoryType? = null // 카테고리
 ) {

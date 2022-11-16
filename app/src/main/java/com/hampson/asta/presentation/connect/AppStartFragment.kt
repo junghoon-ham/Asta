@@ -39,13 +39,13 @@ class AppStartFragment : Fragment() {
 
     private fun checkUserSignIn() {
         lifecycleScope.launch {
-            if (certificationViewModel.getUserSignIn()) {
-                val action =
-                    AppStartFragmentDirections.actionFragmentAppStartToActivityMain()
-                findNavController().navigate(action)
+            //if (certificationViewModel.getUserSignIn()) {
+            val action =
+                AppStartFragmentDirections.actionFragmentAppStartToActivityMain()
+            findNavController().navigate(action)
 
-                requireActivity().finish()
-            }
+            requireActivity().finish()
+            //}
         }
     }
 
