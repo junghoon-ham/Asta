@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.hampson.asta.databinding.ItemProductBinding
 import com.hampson.asta.domain.model.Product
+import com.hampson.asta.domain.util.ProductType
 import java.text.DecimalFormat
 
 class TestAdapter(val dataList: ArrayList<Product> = ArrayList()) :
@@ -43,7 +44,15 @@ class TestAdapter(val dataList: ArrayList<Product> = ArrayList()) :
 
             binding.imageViewProfile.setImageResource(item.productMainImage!!)
 
-            binding.includeStatus.root.isVisible = true
+            when (item.status) {
+                ProductType.SUCCESS -> {
+                    when (item.statusBid) {
+                        
+                    }
+                }
+            }
+            if (item.status == ProductType.SUCCESS)
+                binding.includeStatus.root.isVisible = true
 
             binding.root.setOnClickListener {
                 onItemClickListener?.let { it(item) }

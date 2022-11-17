@@ -2,7 +2,6 @@
   <library name="Gradle: io.coil-kt:coil:2.1.0@aar">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9e87a58391ba0717909227e5bbc27cd6/transformed/coil-2.1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9e87a58391ba0717909227e5bbc27cd6/transformed/coil-2.1.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9e87a58391ba0717909227e5bbc27cd6/transformed/coil-2.1.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
