@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hampson.asta.R
 import com.hampson.asta.databinding.FragmentHomeBinding
 import com.hampson.asta.domain.model.Product
-import com.hampson.asta.domain.util.BidType
-import com.hampson.asta.domain.util.ProductType
+import com.hampson.asta.domain.util.AuctionType
 import com.hampson.asta.presentation.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,8 +45,7 @@ class WishListFragment : BaseFragment() {
                 startPrice = testPrice1(),
                 bidderCount = testCount(),
                 productMainImage = testImage(),
-                status = testStatus(),
-                statusBid = testStatusBid()
+                statusAuction = testStatus()
             )
 
             dataList.add(product)
@@ -62,18 +60,16 @@ class WishListFragment : BaseFragment() {
 
             (adapter as TestAdapter).setOnItemClickListener {
                 val action =
-                    WishListFragmentDirections.actionFragmentWishListStartToFragmentDetailAuction()
+                    WishListFragmentDirections.actionFragmentWishListStartToFragmentDetailAuction(
+                        it.statusAuction ?: AuctionType.NONE
+                    )
                 findNavController().navigate(action)
             }
         }
     }
 
-    private fun testStatus(): ProductType {
-        return ProductType.values().random()
-    }
-
-    private fun testStatusBid(): BidType {
-        return BidType.values().random()
+    private fun testStatus(): AuctionType {
+        return AuctionType.values().random()
     }
 
     private fun testCount(): Int {

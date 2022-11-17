@@ -85,6 +85,10 @@
     <string name="appraisal_by_me">내가 평가한 상품</string>
     <string name="please_input_price">금액을 입력해 주세요.</string>
     <string name="deadline">경매 종료일</string>
+    <string name="action_withdraw_message">판매자의 사정에 의해 경매가 철회되었습니다.</string>
+    <string name="action_fail_message">아쉽게도 패찰하였습니다.</string>
+    <string name="action_success_message">이 경매 상품에 낙찰되었습니다.</string>
+    <string name="action_end_message">경매가 종료되었습니다.</string>
 
     // 카테고리
     <string name="digital">디지털 기기</string>
@@ -117,4 +121,12 @@
     <string name="trade_parcel">택배</string>
     <string name="trade_direct_transaction">직거래</string>
     <string name="trade_negotiable">택배 | 직거래</string>
+
+    // 경매 상태
+    <string name="auction_bidding">입찰중</string>
+    <string name="auction_withdraw">철회됨</string>
+    <string name="auction_fail">패찰</string>
+    <string name="auction_success">낙찰</string>
+    <string name="auction_end">경매종료</string>
+
 </resources>

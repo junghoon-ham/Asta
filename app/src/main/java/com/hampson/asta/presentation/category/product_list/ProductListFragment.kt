@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hampson.asta.R
 import com.hampson.asta.databinding.FragmentProductListBinding
 import com.hampson.asta.domain.model.Product
+import com.hampson.asta.domain.util.AuctionType
 import com.hampson.asta.presentation.BaseFragment
 import com.hampson.asta.presentation.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -63,7 +64,9 @@ class ProductListFragment : BaseFragment() {
 
             (adapter as TestAdapter).setOnItemClickListener {
                 val action =
-                    ProductListFragmentDirections.actionFragmentProductListStartToFragmentDetailAuction()
+                    ProductListFragmentDirections.actionFragmentProductListStartToFragmentDetailAuction(
+                        AuctionType.NONE
+                    )
                 findNavController().navigate(action)
             }
         }

@@ -5,12 +5,15 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.hampson.asta.R
 import com.hampson.asta.databinding.FragmentDetailAuctionBinding
 import com.hampson.asta.domain.model.Product
+import com.hampson.asta.domain.util.AuctionType
 import com.hampson.asta.presentation.BaseFragment
 import com.hampson.asta.presentation.explanation_bottom_sheet.condition.ExplanationConditionBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +23,9 @@ import java.util.concurrent.TimeUnit
 class DetailAuctionFragment : BaseFragment() {
     private var _binding: FragmentDetailAuctionBinding? = null
     private val binding get() = _binding!!
+
+    private val args by navArgs<DetailAuctionFragmentArgs>()
+    private var auctionType: AuctionType? = null
 
     private var maxCount: Long = 3 * 100000
     private val interval: Long = 1000
@@ -39,7 +45,11 @@ class DetailAuctionFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        auctionType = args.auctionType
+
+        bindStatusUI()
         bindProductImage()
+        setupActionButton()
         setupActionBar()
         setupRecyclerView()
         setupClickListener()
@@ -58,6 +68,31 @@ class DetailAuctionFragment : BaseFragment() {
         imageList.add(SlideModel(R.drawable.test_img1, null, ScaleTypes.CENTER_CROP))
 
         binding.imageSlider.setImageList(imageList)
+    }
+
+    private fun bindStatusUI() {
+        with(binding.includeStatus) {
+            root.isVisible = true
+            constraintLayoutRoot.setBackgroundResource(auctionType?.typeDrawable() ?: 0)
+            textViewStatus.run {
+                text = auctionType?.typeName(context)
+                setTextColor(resources.getColor(auctionType?.typeColor() ?: 0))
+            }
+        }
+    }
+
+    private fun setupActionButton() {
+        binding.buttonBid.text = auctionType?.actionButtonMessage(context)
+
+        when (auctionType) {
+            AuctionType.BIDDING,
+            AuctionType.NONE -> {
+                binding.buttonBid.run {
+                    isEnabled = true
+                    binding.buttonBid.setBackgroundResource(R.drawable.round_6_background_ff5a5a)
+                }
+            }
+        }
     }
 
     private fun setupActionBar() {

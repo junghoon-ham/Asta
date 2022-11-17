@@ -22,6 +22,14 @@
                 app:iss_selected_dot="@drawable/default_selected_dot"
                 app:iss_unselected_dot="@drawable/default_unselected_dot" />
 
+            <include
+                android:id="@+id/include_status"
+                layout="@layout/view_auction_type"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="40dp"
+                android:visibility="gone" />
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -30,15 +38,6 @@
                 app:menu="@menu/default_app_bar_menu" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-
-    </androidx.core.widget.NestedScrollView>
 
     <include
         android:id="@+id/include_screen"
@@ -76,9 +75,10 @@
                 android:id="@+id/button_bid"
                 style="@style/Widget.MaterialComponents.Button.Icon"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:background="@drawable/round_6_background_ff5a5a"
+                android:background="@drawable/round_6_background_a6a6a6"
+                android:enabled="false"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:gravity="center"
                 android:text="@string/bidding"

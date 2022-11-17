@@ -7,7 +7,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.hampson.asta.databinding.ItemProductBinding
 import com.hampson.asta.domain.model.Product
-import com.hampson.asta.domain.util.ProductType
+import com.hampson.asta.domain.util.AuctionType
 import java.text.DecimalFormat
 
 class TestAdapter(val dataList: ArrayList<Product> = ArrayList()) :
@@ -44,21 +44,24 @@ class TestAdapter(val dataList: ArrayList<Product> = ArrayList()) :
 
             binding.imageViewProfile.setImageResource(item.productMainImage!!)
 
-            when (item.status) {
-                ProductType.SUCCESS -> {
-                    when (item.statusBid) {
-                        
-                    }
-                }
-            }
-            if (item.status == ProductType.SUCCESS)
-                binding.includeStatus.root.isVisible = true
+            bindStatusUI(item.statusAuction)
 
             binding.root.setOnClickListener {
                 onItemClickListener?.let { it(item) }
             }
         }
 
-
+        private fun bindStatusUI(
+            auctionType: AuctionType?
+        ) {
+            with(binding.includeStatus) {
+                root.isVisible = true
+                constraintLayoutRoot.setBackgroundResource(auctionType?.typeDrawable() ?: 0)
+                textViewStatus.run {
+                    text = auctionType?.typeName(context)
+                    setTextColor(resources.getColor(auctionType?.typeColor() ?: 0))
+                }
+            }
+        }
     }
 }

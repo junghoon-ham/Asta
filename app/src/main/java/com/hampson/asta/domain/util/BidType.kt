@@ -5,7 +5,4 @@ enum class BidType {
     FAIL, // 패찰
     SUCCESS, // 낙찰
     WITHDRAW, // 철회 (판매자가 경매를 취소할때)
-
-    //TODO: test이후 삭제
-    NONE;
 }

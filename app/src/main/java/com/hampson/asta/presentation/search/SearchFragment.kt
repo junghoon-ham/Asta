@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hampson.asta.R
 import com.hampson.asta.databinding.FragmentSearchBinding
 import com.hampson.asta.domain.model.Product
+import com.hampson.asta.domain.util.AuctionType
 import com.hampson.asta.presentation.BaseFragment
 import com.hampson.asta.util.Constants.SEARCH_PRODUCT_TIME_DELAY
 import dagger.hilt.android.AndroidEntryPoint
@@ -64,7 +65,9 @@ class SearchFragment : BaseFragment() {
 
             (adapter as TestAdapter).setOnItemClickListener {
                 val action =
-                    SearchFragmentDirections.actionFragmentSearchStartToFragmentDetailAuction()
+                    SearchFragmentDirections.actionFragmentSearchStartToFragmentDetailAuction(
+                        AuctionType.NONE
+                    )
                 findNavController().navigate(action)
             }
         }

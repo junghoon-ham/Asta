@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hampson.asta.R
 import com.hampson.asta.databinding.FragmentHomeBinding
 import com.hampson.asta.domain.model.Product
+import com.hampson.asta.domain.util.AuctionType
 import com.hampson.asta.presentation.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -77,7 +78,9 @@ class HomeFragment : BaseFragment() {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
             (adapter as TestAdapter).setOnItemClickListener {
-                val action = HomeFragmentDirections.actionFragmentHomeStartToFragmentDetailAuction()
+                val action = HomeFragmentDirections.actionFragmentHomeStartToFragmentDetailAuction(
+                    AuctionType.NONE
+                )
                 findNavController().navigate(action)
             }
         }

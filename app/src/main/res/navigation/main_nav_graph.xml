@@ -131,6 +131,10 @@
         android:name="com.hampson.asta.presentation.detail_auction.DetailAuctionFragment"
         tools:layout="@layout/fragment_detail_auction">
 
+        <argument
+            android:name="auctionType"
+            app:argType="com.hampson.asta.domain.util.AuctionType" />
+
         <action
             android:id="@+id/action_fragment_detail_auction_to_fragment_comment"
             app:destination="@id/fragment_comment"

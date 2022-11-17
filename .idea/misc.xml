@@ -3,11 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable-v24/circle_auction_fail_type.xml" value="0.2865" />
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable-v24/circle_auction_success_type.xml" value="0.2865" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable-v24/ic_baseline_favorite_24_red.xml" value="0.231" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.196" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable-v24/rect_top_rounded_12_background_ffffff.xml" value="0.1905" />
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable-v24/round_6_background_a6a6a6.xml" value="0.2865" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable/background_label.xml" value="0.275" />
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable/circle_auction_end_type.xml" value="0.2865" />
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable/circle_auction_fail_type.xml" value="0.2865" />
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable/circle_auction_success_type.xml" value="0.2865" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable/circle_auction_type.xml" value="0.1945" />
+        <entry key="..\:/projects/Asta/app/src/main/res/drawable/circle_auction_withdraw_type.xml" value="0.2865" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.27" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable/ic_baseline_cancel_12.xml" value="0.283" />
         <entry key="..\:/projects/Asta/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.231" />
