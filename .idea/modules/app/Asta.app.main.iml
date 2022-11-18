@@ -150,8 +150,8 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/dfa34d7e8795bc87eca9326258154038/transformed/ImageSlideshow-0.1.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/disklrucache/4.14.2/543524781bc197fb64e1c2df1756a8ec17ff05ba/disklrucache-4.14.2.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/annotations/4.14.2/57e84ef841035701766b7d74236d04c65cfa4248/annotations-4.14.2.jar</arg>
-                <arg>$MODULE_DIR$/../../../../../AndroidStudio/platforms/android-32/android.jar</arg>
-                <arg>$MODULE_DIR$/../../../../../AndroidStudio/build-tools/30.0.3/core-lambda-stubs.jar</arg>
+                <arg>$USER_HOME$/AndroidStudio/platforms/android-32/android.jar</arg>
+                <arg>$USER_HOME$/AndroidStudio/build-tools/30.0.3/core-lambda-stubs.jar</arg>
               </args>
             </stringArg>
             <stringArg name="destination" arg="$MODULE_DIR$/../../../app/build/tmp/kotlin-classes/debug" />

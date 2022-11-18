@@ -145,8 +145,8 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/b135a5c34345853de8a3c5b7fadc954e/transformed/tracing-1.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/listenablefuture/1.0/c949a840a6acbc5268d088e47b04177bf90b3cad/listenablefuture-1.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/002d45aa822efcc0ec8a8ab284a91ad2/transformed/startup-runtime-1.0.0-api.jar</arg>
-                <arg>$MODULE_DIR$/../../../../../AndroidStudio/platforms/android-32/android.jar</arg>
-                <arg>$MODULE_DIR$/../../../../../AndroidStudio/build-tools/30.0.3/core-lambda-stubs.jar</arg>
+                <arg>$USER_HOME$/AndroidStudio/platforms/android-32/android.jar</arg>
+                <arg>$USER_HOME$/AndroidStudio/build-tools/30.0.3/core-lambda-stubs.jar</arg>
               </args>
             </stringArg>
             <stringArg name="destination" arg="$MODULE_DIR$/../../../app/build/tmp/kotlin-classes/debugAndroidTest" />
